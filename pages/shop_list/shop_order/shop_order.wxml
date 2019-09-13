@@ -1,0 +1,269 @@
+<!--shop_order.wxml-->
+<!--循环输出开始-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <form name='pushMsgFm' report-submit bindsubmit='orderSign'>
+    <view class='header'>
+      <!--收货地址-->
+
+      <view class='order_one'>
+        <!--界面跳转 -->
+
+        <view class='order_a'>
+          <view class='order_a_right' bindtap='GoToAdress'>
+            <view class='order_a_right_a'>收货人：
+              <text>{{ContenLlist.UserName==null?"":ContenLlist.UserName}}</text>
+              <text class='call'>电话：{{ContenLlist.UserPhone==null?"":ContenLlist.UserPhone}}</text>
+            </view>
+            <view class='order_a_right_b'>
+              <text class='iconfont icon-dingwei iconfont_text'></text>
+              <text class='iconfont_texta'>收货地址：<text>{{ContenLlist.UserAddress==null?"":ContenLlist.UserAddress}}</text></text>
+
+              <text class='iconfont icon-xiangyou iconfont_you'></text>
+
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+
+      <!--收货地址-->
+      <view class='order-back'>
+        <image src='{{back_img}}' class='order_back_img' background-size='cover' mode="scaleToFill"></image>
+      </view>
+
+
+      <!--收货地址-->
+      <view class='order_two'>
+        <!--界面跳转 -->
+        <navigator url="../../../pages/shop_list/shop_info/shop_info?id={{orderId}}" hover-class="navigator-hover">
+          <text class='order_two_a'>商品信息</text>
+          <view class='order_two_b'>
+            <view class='order_b_a'>
+              <!--循环输出开始-->
+              <block wx:for="{{Detail}}" wx:for-item="lis" wx:for-index="i" wx:if="{{i<3}}" wx:key="key">
+                <image src='{{lis.Picture}}' class='order_a_img' background-size='cover' mode="scaleToFill"></image>
+              </block>
+            </view>
+            <view class='order_b_bq'>
+              <text class='order_b_ba '>共{{Conat}}种商品</text>
+              <text class='iconfont icon-xiangyou order_b_bb'></text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+
+
+
+      <!--配送地址-->
+      <view class='ps'>
+        <view class='ps_center'>
+          <view class='ps_one'>
+            <view class='ps_one_w'>
+              <text class='ps_one_a'>配送方式</text>
+              <view class="ps_b_bq newStyle">
+                <!-- <text class='order_b_ba ps_text'>{{Distribution.name}}</text>
+              <text class='iconfont icon-xiangyou order_b_bb'></text> -->
+                <text hidden='{{!IsRestaurant}}' class="txt_tab {{Distribution.id==4 ? 'on' : ''}}" data-id='4' bindtap="PSclick">免费配送</text>
+                <text class="txt_tab {{Distribution.id==1 ? 'on' : ''}}" data-id='1' bindtap="PSclick">立即配送</text>
+                <text class="txt_tab {{Distribution.id==2 ? 'on' : ''}}" data-id='2' bindtap="PSclick">预约配送</text>
+                <!-- <text class="txt_tab {{Distribution.id==3 ? 'on' : ''}}" data-id='3' bindtap="PSclick">门店自提</text> -->
+
+              </view>
+            </view>
+            <view class='sub_order' hidden='{{Distribution.id==1}}'>
+              <block wx:if="{{Distribution.id==2}}">
+                <view class='wrap'>
+                  <view class='section'>
+                    <view class='w'>
+
+                      <picker mode="multiSelector" bindchange='chooseDeliveryTime' bindcolumnchange="bindMultiPickerColumnChange" value="{{dt_index}}" range='{{dt_array}}'>
+                        <view class='picker color_2B9EEF'>
+                          {{dt_array[0][dt_index[0]]}} - {{dt_array[1][dt_index[1]]}} - {{dt_array[2][dt_index[2]]}}
+                        </view>
+                      </picker>
+
+                      <text>开始配送</text>
+                    </view>
+                    <text>预计送达时间30-60分钟</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:if="{{Distribution.id==3}}">
+                <view class='wrap'>
+                  <view class='section'>
+                    <label>自提时间</label>
+                    <view class='w'>
+                      <picker mode="multiSelector" bindchange='chooseDeliveryTime' bindcolumnchange="bindMultiPickerColumnChange" value="{{dt_index}}" range='{{dt_array}}'>
+                        <view class='picker' style='color:#2B9EEF'>
+                          {{dt_array[0][dt_index[0]]}} - {{dt_array[1][dt_index[1]]}} - {{dt_array[2][dt_index[2]]}}
+                        </view>
+                      </picker>
+                    </view>
+                  </view>
+                </view>
+              </block>
+              <block wx:if="{{Distribution.id==4}}">
+                <view class='wrap'>
+                  <view class='section ptPeiA'>
+                    <view class='w'>
+                      <text>配送提示：</text>
+                    </view>
+                    <view class='ptPei'>
+                      <picker mode="multiSelector" bindchange="bindDayChange" bindcolumnchange="bindMulDay" value="{{dayPt}}" range="{{dayPtArray}}">
+                        <block wx:if="{{islogin}}">
+                          <text class='textcoll'>选择送达时间</text>
+                        </block>
+                        <block wx:else>
+                          <text>{{dayPtArray[0][dayPt[0]]}}-{{dayPtArray[1][dayPt[1]]}}</text>
+                        </block>
+                      </picker>
+                      <image src='/images/icon_arrowR.png'></image>
+                    </view>
+                    <!-- <text>您的订单将在{{SDText}}配送完成</text> -->
+
+                  </view>
+                </view>
+              </block>
+              <view class='wrap' hidden='{{Distribution.id==3?false:true}}'>
+                <view class='section'>
+                  <label>提货地点</label>
+                  <view class='w'>
+                    {{MarketName}}，摊位：{{SelfShop}}
+                  </view>
+                </view>
+              </view>
+              <view class='wrap' hidden='{{Distribution.id==3?false:true}}'>
+                <view class='section' hidden='{{Distribution.id==3?false:true}}'>
+                  <label>联系电话</label>
+                  <view class='w' bindtap='getPhone'>
+                    {{MarketPhone}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <textarea placeholder='点击这里输入备注信息' bindinput="GetTxt" class='textareatext' bindblur='textTob' value='{{TextST}}'></textarea>
+        </view>
+      </view>
+
+      <!--支付方式-->
+      <view class='ps'>
+        <view class='ps_center'>
+          <view class='ps_one'>
+            <text class='ps_one_a'>支付方式</text>
+            <view class='ps_b_bq' bindtap='a'>
+              <text class='order_b_ba ps_text'></text>
+            </view>
+          </view>
+
+          <template name="tc_lia">
+            <view class='info_tc_li' data-id='{{id}}' bindtap="ZFclick">
+              <view class='info_tc_li_a tc_a'>
+                <image src='{{zf_zx}}' class='zf_zx' background-size='cover' mode="scaleToFill"></image>
+                <text class='info_text'>{{info_text}}</text>
+                <image src='{{tc_img}}' class='tc_img ' background-size='cover' mode="scaleToFill"></image>
+              </view>
+            </view>
+          </template>
+          <!--循环输出开始-->
+          <block wx:for="{{tc_lia}}" wx:for-item="lisaa" wx:key="key">
+            <template is="tc_lia" data="{{...lisaa}}" />
+          </block>
+          <view class='ps_one_wrap' hidden='{{!IsRestaurant}}'>
+            <view class='ps_one' bindtap='chooseCoupon' data-orderid="{{orderId}}">
+              <text class='ps_one_a'>优惠券</text>
+              <view class='ps_b_bq w200'>
+                <text>点击选择优惠券</text>
+                <!-- <text class='iconfont icon-xiangyou order_b_bb'></text> -->
+                <!-- <navigator url="../../../pages/my/my_yhj/my_yhj?orderId={{orderId}}" hover-class="navigator-hover">
+              <text class='iconfont icon-xiangyou order_b_bb'></text>
+              </navigator> -->
+              </view>
+            </view>
+            <block wx:for='{{selectCoupon}}' wx:item='item' wx:key='key'>
+              <view class='IsSelectedCoupon'>
+                <view class='wrap'>
+                  <text>{{item.Title}}</text>
+                  <text>￥{{item.Price}}元</text>
+                </view>
+                <view class='wrap'>
+                  <block wx:if="{{item.CouponSendType==3}}">
+                    <text>{{item.ShopName}}</text>
+                  </block>
+                  <block wx:else>
+                    <text>平台</text>
+                  </block>
+                </view>
+                <view class='op04'>{{item.PublishTime}}-{{item.Deadline}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <!--支付方式-->
+      <view class='ps'>
+        <view class='ps_center'>
+          <view class='ps_one'>
+            <text class='ps_one_a'>消费小计</text>
+          </view>
+          <view class='ps_three'>
+            <view class='ps_three_a'>
+              <text class='ps_t_aa'>订单金额</text>
+              <text class='ps_t_ab'>￥{{ContenLlist.TotalMoney==0?"0.00":ContenLlist.TotalMoney}}</text>
+            </view>
+            <view class='ps_three_a' hidden='{{!IsRestaurant}}'>
+              <text class='ps_t_aa'>批发优惠</text>
+              <text class='ps_t_ab'>-￥{{DiscountMoney==0?"0.00":DiscountMoney}}</text>
+            </view>
+            <view class='ps_three_a' hidden='{{IsRestaurant}}'>
+              <text class='ps_t_aa'>优惠金额</text>
+              <text class='ps_t_ab'>-￥{{PreferentialAmount==0?"0.00":PreferentialAmount}}</text>
+            </view>
+            <view class='ps_three_a'>
+              <text class='ps_t_aa'>配送费用</text>
+              <text class='ps_t_ab'>￥{{DistributionCost==0?"0.00":DistributionCost}}</text>
+            </view>
+            <view class='ps_three_a'>
+              <text class='ps_t_aa'>应付金额</text>
+              <text class='ps_t_ab'>￥{{AmountPayable==0?"0.00":AmountPayable}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!--支付方式-->
+      <view class='button_a'>
+        <!-- <text>备注：</text>
+      <text>斗鲜生的配送时间为早上9点到晚上20点，晚上20点后的订单我们由第二天开始配送。我们郑重承诺最短30分钟最长不超过120分钟内给您送达。如遇不可抗力原因（例如天气原因或者自然灾害等情况）可能会延迟，如果给您造成不便我们深感抱歉。</text> -->
+        <button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" form-type="submit"> 确认支付 </button>
+      </view>
+
+      <!--显示隐藏-->
+      <!-- <view class="b1" hidden="{{flag1}}" bindtap='Hiedbta'>
+    
+      <view class='info_tc_a' bindtap='btaB3'>
+        <view class='info_tc_li'>
+          <view class='info_tc_li_a' bindtap='d'>
+            <text>配送方式：</text>
+            <text class='iconfont icon-X' bindtap='d'></text>
+          </view>
+        </view>
+        <template name="tc_li">
+          <view class='info_tc_li' data-id='{{id}}' bindtap="PSclick">
+            <view class='info_tc_li_a'>
+              <text>{{li_b}}</text>
+              <image src='{{li_img}}' class='tc_img' background-size='cover' mode="scaleToFill"></image>
+            </view>
+          </view>
+        </template>
+        
+        <block wx:for="{{tc_li}}" wx:for-item="lisa" wx:key="key">
+          <template is="tc_li" data="{{...lisa}}" />
+        </block>
+      </view>
+    </view> -->
+    </view>
+  </form>
+</view>

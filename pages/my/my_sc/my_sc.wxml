@@ -1,0 +1,62 @@
+<!--shop_list.wxml-->
+<view class='ptColor'>
+<view class='shop_one' style="overflow:scroll;">
+  <view class='shop_one_a'>
+    <template name='shop_list'>
+      <view class='shop_one_aa'>
+        <view class='shop_one_b'>
+
+          <block wx:if='{{IsStoreBusiness}}'>
+ <navigator url="../../../pages/shop_list/shop_page/shop_pege?id={{Id}}" hover-class="navigator-hover">
+            <view class='ptImgq'>
+              <image src='{{Picture}}' class='shop_one_img' background-size="cover" mode='mode="scaleToFill'></image>
+              
+            </view>
+
+
+            <text class='shop_one_text'>{{Title}}</text>
+          </navigator>
+          </block>
+          <block wx:else>
+
+            <view class='ptImgq'>
+              <image src='{{Picture}}' class='shop_one_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <view class='ptDa'>
+                <text>已打烊</text>
+              </view>
+            </view>
+
+
+            <text class='shop_one_text'>{{Title}}</text>
+
+          </block>
+          <!--界面跳转 -->
+         
+
+
+          <view class='shop_one_c' style="">
+            <view class='shop_one_d'>￥{{Price}}
+              <text>/{{Unit}}</text>
+            </view>
+            <view class='shop_img'>
+              <text class="iconfont icon-delete-alt" bindtap="Del" data-co_id="{{Id}}"></text>
+              <image src='/images/icon_add.png' bindtap="Join" data-isb='{{IsStoreBusiness}}' data-joinid="{{Id}}" class='shop_one_e_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </template>
+    <!--循环输出开始-->
+    <block wx:for="{{shop}}" wx:for-item="lis" wx:key="lis">
+      <template is="shop_list" data="{{...lis}}" />
+    </block>
+  </view>
+  <block wx:if="{{IsNAN}}">
+    <view class='null'>
+      <image src="/images/CollectionNoll.png"></image>
+    </view>
+  </block>
+</view>
+<view class="loading" hidden="{{searchLoading}}">正在载入更多...</view>
+<view class="loading complete" hidden="{{searchLoadingComplete}}">没有了呀，快放手</view>
+</view>

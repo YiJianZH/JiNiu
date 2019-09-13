@@ -1,0 +1,188 @@
+<!--pages/index/merchartYellowPage/myp.wxml-->
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+<movable-area>
+  <view class='myp'>
+    <view class='look_up'>
+      <view class='wrap'>
+        <view class='left_wrap'>
+          <image src='{{storeData.CoverImage}}'></image>
+          <view class='txt'>
+            <text class='ncon_topame'>{{storeData.Name}}</text>
+            <text class='description'>商家自送-{{totime}}分钟</text>
+          </view>
+        </view>
+        <view class='right_wrap' bindtap='gobromm' data-sid='{{storeData.Id}}'>
+          <text>商家介绍</text>
+        </view>
+      </view>
+    </view>
+    <!-- 顶部搜索框 -->
+    <view class='top_search'>
+      <view class='wrap'>
+        <image class='icon_search' src='/images/icon_search.png'></image>
+        <view class='input_w'>
+          <input placeholder='搜索店内商品' bindinput='setSearchName' bindconfirm="goSearchName"></input>
+        </view>
+      </view>
+    </view>
+    <view class="container">
+      <!--左侧栏-->
+      <view id="nav_left">
+        <scroll-view scroll-y='true' class='MenList'>
+          <block wx:for="{{TypeList}}" wx:key="key" wx:for-item="tpe">
+            <view class="nav_left_items {{currentTab==tpe.Id ? 'active' : ''}}" data-index='{{index}}' data-current="{{tpe.Id}}" bindtap="switchRightNav">
+              <text>{{tpe.Name}}</text>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <!--右侧栏-->
+      <view id='nav_right'>
+        <scroll-view scroll-y='true' class='MenList' bindscrolltolower="lower" scroll-top="{{stop}}" scroll-into-view="{{toView}}"  bindscroll="scroll">
+          <view class='box'>
+            <block>
+              <view class="right_lists">
+                <block wx:if="{{appUserType==1}}">
+                <view class='top_bar' hidden='{{!storeData.IsCoupon}}'>
+                  <view class='show_lists'>
+                    <!-- //判断是否有满减 -->
+                    <view class='each_banner' bindtap='showCouponsPop'>
+                      <image src='/images/image_quan.png'></image>
+                    </view>
+
+                  </view>
+                </view>
+                </block>
+                <block wx:for="{{ProductList}}" wx:key="key" wx:for-item="prod">
+                  <view class='label_w' id='pt{{prod.Id}}'>
+                    <label >{{prod.Name}}</label>
+                  </view>
+                  <view class='lists_con'  hidden='{{prod.ProductList.length==0}}'>
+                    <block wx:for="{{prod.ProductList}}" wx:for-item="pitem" wx:key="key">
+                    <view class='con_top'>
+                      <view class='left_wrap' data-pid='{{pitem.Id}}' data-isb='{{pitem.IsStoreBusiness}}' bindtap='productDeil'>
+                        <view class='l_w'>
+
+                          <block wx:if="{{pitem.IsStoreBusiness}}">
+                            <block wx:if="{{pitem.Inventory>0}}">
+                              <image class='good_img' src='{{pitem.Picture}}'></image>
+                            </block>
+                            <block wx:else>
+                              <image class='good_img' src='{{pitem.Picture}}'></image>
+                              <image class='good_img icon_sellout' src='/images/icon_sellout.png'></image>
+                            </block>
+                          </block>
+
+                          <block wx:else>
+                            <block wx:if="{{isSelling}}">
+                              <image class='good_img' src='{{pitem.Picture}}'></image>
+                            </block>
+                            <block wx:else>
+                              <image class='good_img' src='{{pitem.Picture}}'></image>
+                              <image class='good_img icon_sellout' src='/images/icon_sellout.png'></image>
+                            </block>
+                              <view class='ptDa'>
+                                <text>已打烊</text>
+                              </view>
+                          </block>
+                     
+                        </view>
+                        <view class='r-w'>
+                          <text class='good_size'>{{pitem.Title}}{{pitem.Unit}}</text>
+                          <text class='good_pricea'>￥{{pitem.Price}}</text>
+                          <text class='good_priceb'>￥{{pitem.OldPrice}}</text>
+                        </view>
+                      </view>
+                      <view class='right_wrap'>
+                        <block wx:if="{{pitem.IsDiscount}}">
+                          <view>满减</view>
+                        </block>
+                        <image src='{{appUserType==2?"/images/icon_addbig_lan.png":"/images/icon_addbig.png"}}' bindtap='joinCart' data-id='{{pitem.Id}}' data-isb='{{pitem.IsStoreBusiness}}' data-uid='{{pitem.UnitId}}'></image>
+                      </view>
+                    </view>
+                  
+                  </block>
+                  </view>
+
+                </block>
+
+              </view>
+            </block>
+          </view>
+          <view class="msgeimg">
+            <view class='stext' hidden='{{msgejz}}'>正在载入更多...</view>
+            <view class='stext' hidden='{{msgemy}}'>没有更多了</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <!-- 弹窗-领取优惠券 -->
+    <view class='pop' hidden='{{CouponsPopSH}}'>
+      <view class='coupons_pop'>
+        <scroll-view scroll-y='true'>
+          <view class='pop_top'>
+            <text>领取优惠券</text>
+          </view>
+          <view class='pop_bottom'>
+            <view class='lists'>
+
+              <scroll-view scroll-y style="height:540rpx;" bindscrolltolower="GetMoreCoupon">
+                <block wx:for='{{StoreCoupon}}' wx:item='item' wx:key='coupon'>
+                  <view class='each_list'>
+                    <view class='wrap'>
+                      <view class='w'>
+                        <view class='mid_wrap'>
+                          <text class='fz36 color_333'>满{{item.FullPrice}}减{{item.Price}}</text>
+                          <text class='fz24 color_ccc'>{{item.Explanation==null?"":item.Explanation}}</text>
+                          <text class='fz24 color_ccc'>{{item.PublishTime}}-{{item.Deadline}}</text>
+                        </view>
+                      </view>
+                      <block wx:if='{{item.IsGet}}'>
+                        <view class='right_wrap' bindtap='AddCoupon' style='z-index:9999999' data-addid='{{item.Id}}'>
+                          <view>领取</view>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <view class='right_wrap got'>
+                          <view>已领取</view>
+                        </view>
+                      </block>
+                    </view>
+                    <block wx:if='{{item.IsGet}}'>
+                      <image class='icon_ylq' src='/images/icon_dlq.png'></image>
+                    </block>
+                    <block wx:else>
+                      <image class='icon_ylq' src='/images/image_ylq.png'></image>
+                    </block>
+
+                  </view>
+                </block>
+              </scroll-view>
+
+
+            </view>
+          </view>
+        </scroll-view>
+        <view class='close_btn' bindtap='hideCouponsPop'>
+          <image class='image_close' src='/images/icon_close_white.png'></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 购物车 -->
+  <movable-view x="{{x}}" y="{{y}}" direction="all">
+    <view class='cart' bindtap='cart_show'>
+      <button>购物车</button>
+      <image src='/images/icon_shopw.png'></image>
+      <text>{{nuber}}</text>
+
+    </view>
+  </movable-view>
+
+</movable-area>
+
+</view>

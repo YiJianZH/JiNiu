@@ -1,0 +1,24 @@
+<view class="login">
+  <image class='logo' src='/images/logoNew.png'></image>
+  <view class='login_input'>
+    <image class='icon_input' src='/images/icon_user.png'></image>
+    <input placeholder='请输入账号' bindinput='setname' value='{{userName}}' ></input>
+  </view>
+  <view class='login_input'>
+    <image class='icon_input' src='/images/icon_key.png'></image>
+    <input placeholder='请输入账号' bindinput='setpwd' password='true'  value='{{userPwd}}'></input>
+  </view>
+
+  <view class='w'>
+    <view class='w_con' bindtap='setSH'>
+    <block wx:if="{{isSelected}}">
+      <image class='icon_checkbox' src='/images/icon_checkboxb.png'></image>
+    </block>
+    <block wx:else>
+      <image class='icon_checkbox' src='/images/icon_checkboxa.png'></image>
+    </block>
+    <text>记住密码</text>
+    </view>
+  </view>
+  <button bindtap='to_home'>登录</button>
+</view>

@@ -1,0 +1,94 @@
+<!--shop_cart.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+<view class='cart_one' hidden='{{masgetype}}'>
+  <!--循环输出开始-->
+
+  <block wx:for="{{Cartlist}}" wx:for-item="lis" wx:for-index="idx" wx:key="key">
+
+    <view class='cart_back'>
+
+      <view class='cart_one_center'>
+
+        <view class='cart_one_left'>
+          <view class='cart_one_left_a'>
+            <image src='{{lis.img}}' class='cart_left_a_img' data-id='{{lis.Id}}' data-pri='{{lis.Price}}' data-index='{{idx}}' data-pid='{{lis.ProductId}}' data-mun='{{lis.Num}}' background-size='cover' mode="scaleToFill" bindtap="CartOnclick"></image>
+
+          </view>
+        </view>
+
+        <view class='cart_one_right'>
+           <block wx:if='{{lis.IsBusiness}}'>
+ <navigator url="../../../pages/shop_list/shop_page/shop_pege?id={{lis.ProductId}}" hover-class="navigator-hover">
+            <view class='cart_one_right_a'>
+              <image src='{{lis.PictureId}}' class='cart_one_right_a_img' background-size='cover' mode="scaleToFill"></image>
+             
+            </view>
+          </navigator>
+            </block>
+            <block wx:else>
+
+            <view class='cart_one_right_a'>
+              <image src='{{lis.PictureId}}' class='cart_one_right_a_img' background-size='cover' mode="scaleToFill"></image>
+              <view class='ptDa'>
+                <text>已打烊</text>
+              </view>
+            </view>
+
+            </block>
+         
+
+          <view class='cart_one_right_b'>
+            <view class='cart_del'>
+              <text class='cart_right_ba'>{{lis.ProductName}}|{{lis.ProductId}}</text>
+              <text class='del_a' bindtap="OnClikeDel" data-caid='{{lis.Id}}'>删除</text>
+            </view>
+            <view class='cart_right_bb'>
+              <text decode='{{true}}'>{{lis.UnitName}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+              <text>￥{{lis.OldPrice}}</text>
+            </view>
+            <view class='cart_right_bc'>
+              <text class='cf'>￥{{lis.Price}}</text>
+              <text class='ca'>/{{lis.UnitName}}</text>
+              <!-- <text class='cb'>￥{{lis.OldPrice}}</text> -->
+
+              <!--加减-->
+              <view class="stepper">
+                <!-- 减号 -->
+                <text class="{{lis.minusStatus}}" bindtap="bindMinus" data-index='{{idx}}'>-</text>
+                <!-- 数值 -->
+                <input type="digit" disabled='true' value="{{lis.Num}}"></input>
+                <!-- 加号 -->
+                <text class="normal" bindtap="bindPlus" data-index='{{idx}}'>+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{IsNull}}">
+    <view class="nocart">
+      <image src="/images/CartNoll.png"></image>
+    </view>
+  </block>
+  <view class='cart_last'>
+    <view class='cart_last_a'>
+      <view class='cart_last_left'>
+        <image src='{{QuanXuan}}' background-size='cover' mode="scaleToFill" class='cart_last_left_img' bindtap='QuanXuanOnck'></image>
+        <text>全选</text>
+      </view>
+      <view class='cart_last_center'>
+        总金额：
+        <text>￥{{TotalMoney==0?"0.00":TotalMoney}}</text>
+      </view>
+      <form bindsubmit="formSubmit">
+        <button form-type="submit" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="buttonSman" hover-class="other-button-hover">立即下单</button>
+
+      </form>
+
+    </view>
+  </view>
+
+  <view class='kong'></view>
+</view>
+</view>

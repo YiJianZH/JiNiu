@@ -1,0 +1,75 @@
+<import src="../../../../wxParse/wxParse.wxml" />
+<view class='{{appUserType==2?"ptColor":""}}'>
+<view class='mi'>
+  <view class='shop_sign'>
+    <view class='img_wrap'>
+      <image src='{{storeData.CoverImage}}'></image>
+      <!-- <image background-size="cover" mode="scaleToFill" src='/images/banner_test.png'></image> -->
+    </view>
+    <view class='bottom_info'>{{storeData.Name}}</view>
+  </view>
+
+  <view class='mi_info'>
+    <view class='info_top'>
+      <image class='icon_markb' src='/images/icon_markb.png'></image>
+      <text>{{storeData.Address}}</text>
+    </view>
+  </view>
+
+  <view class='mi_info'>
+    <view class='info_top'>
+      <image src='/images/icon_call.png'></image>
+      <text>{{storeData.Phone}}</text>
+    </view>
+  </view>
+  
+  <view class='spacing'></view>
+
+  <view class='mi_info'>
+    <view class='info_top'>
+      <image src='/images/icon_md.png'></image>
+      <text>门店介绍</text>
+    </view>
+    <view class='info_bottom'>
+      <view class='txt'>
+        <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class='spacing'></view>
+  <block wx:for="{{clis}}" wx:key="key" >
+  <view class='mi_info'>
+    <view class='info_top'>
+      <image src='/images/icon_pj.png'></image>
+      <text>评价</text>
+    </view>
+    <view class='info_bottom'>
+      <view class='user_info'>
+        <text>{{item.UserName}}</text>
+        <text>{{item.CommentTimeStr}}</text>
+      </view>
+      <view class='star_evaluation'>
+        <block wx:for="{{item.CommentLevel}}" wx:key="ekye" wx:for-index="ids">
+          <image src='/images/icon_aa.png' ></image>
+        </block>
+        <block wx:for="{{5-item.CommentLevel}}" wx:key="ekye" wx:for-index="idx">
+           <image src='/images/icon_stargry.png'  ></image>
+        </block>
+        
+      </view>
+      <view class='txt'>
+        <text>{{item.CommentText}}</text>
+      </view>
+    </view>
+  </view>
+  
+</block>
+
+ 
+
+  <button bindtap='goPhone' data-phone='{{storeData.Phone}}'>拨打电话</button>
+</view>
+</view>

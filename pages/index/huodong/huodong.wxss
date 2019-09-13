@@ -1,0 +1,55 @@
+/**index.wxss**/
+.ul{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.li{
+  width: 100%;
+  height: 240rpx;
+  overflow: hidden;
+  margin-top: 30rpx;
+}
+.banner{
+  width:100%;
+  height: 240rpx;
+  display: block;
+}
+page{
+  width: 100%;
+  height: 100%;
+   overflow-x: hidden;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

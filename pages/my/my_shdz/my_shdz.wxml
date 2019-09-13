@@ -1,0 +1,50 @@
+<!--pages/my/my.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+<view class='sh'>
+  <block wx:for="{{sh_ul}}" wx:for-item="lis" wx:for-index="idx" wx:key="key">
+    <view class='sh_ul' data-id="{{lis.Id}}" data-index='{{idx}}' >
+      <view class='sh_ul_a'>
+        <view class='sh_ul_aa'>
+          <view class='sh_ul_text'>
+            <text>{{lis.Name}}</text>
+            <text>{{lis.Phone}}</text>
+          </view>
+          <view class='sh_ul_texta'>
+            <text>{{lis.Detail}}：{{lis.DetailText}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='sh_ul_b'>
+        <view class='sh_ul_ba' style='width:100%'>
+          <view style='float:left;width:30%'>
+          <block wx:if="{{lis.IsDefault}}">
+            <image src='/images/cart_b.png' class='sh_ul_img' background-size='cover' data-updateid="{{lis.Id}}" data-index="{{idx}}" bindtap="setDefault" mode="scaleToFill"></image>
+          </block>
+          <block wx:else>
+            <image src='/images/cart_a.png' class='sh_ul_img' background-size='cover' data-updateid="{{lis.Id}}"  data-index="{{idx}}"  bindtap="setDefault" mode="scaleToFill"></image>
+          </block>          
+          <text data-updateid="{{lis.Id}}"  data-index="{{idx}}"  bindtap="setDefault" >选择</text>
+          </view>
+          <view style='float:right;width:30%'>
+ <image src='../../../images/sh_b.png'   style='left:40%' class='sh_ul_bc_img sh_ul_i'   background-size='cover' mode="scaleToFill"></image>
+                  
+                  <text  data-index="{{idx}}" bindtap="DeleteAddress" >删除</text>
+                  </view>
+                  <view style='float:right;width:30%'>
+                   <image src='../../../images/sh_a.png'  style='left:70%' class='sh_ul_bc_img'  background-size='cover' mode="scaleToFill" ></image>
+                  <text  data-index="{{idx}}"   bindtap="GoUpdate">编辑</text>
+                  </view>
+          
+        </view>
+
+      </view>
+    </view>
+ 
+  </block>
+  <view class='button_a' >
+     <button type="default" size="{{defaultSize}}"  bindtap="confirm" hover-class="none" > 确定 </button>
+</view>
+</view>
+<view class='massgetxt'>未找到您合适的地址？点击（<text class='logtxt' bindtap='GoInsert'>新增</text>）</view>
+
+</view>

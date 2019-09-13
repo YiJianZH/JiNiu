@@ -1,0 +1,26 @@
+<!--pages/backstage/home/storeOperation/accountChecking/innerPage/ip.wxml-->
+
+<view class='ip'>
+  <view class='lists'>
+    <view class='each_list'>
+      <text class='color_666'>货款</text>
+      <text class='color_f90 fz40'>￥{{HomEntity.Payment}}</text>
+    </view>
+    <view class='each_list'>
+      <text class='color_666'>营业额</text>
+      <text class='color_f90 fz40'>￥{{HomEntity.Turnover}}</text>
+    </view>
+    <view class='each_list'>
+      <text class='color_666'>活动款</text>
+      <text class='color_f90 fz40'>￥{{HomEntity.Activity}}</text>
+    </view>
+    <view class='each_list'>
+      <text class='color_666'>市场费</text>
+      <text class='color_f90 fz40'>￥{{HomEntity.MarketMoney}}</text>
+    </view>
+    <view class='each_list'>
+     <text class='color_666'>利润</text>
+      <text class='color_f90 fz40'>￥{{HomEntity.Profit}}</text>
+    </view>
+  </view>
+</view>

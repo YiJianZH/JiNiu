@@ -1,0 +1,405 @@
+<!--index.wxml-->
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+
+
+  <view class='index' hidden='{{!logfig}}'>
+    <image class='preload_img' src='/images/loggif.gif' style='{{}}'></image>
+  </view>
+  <view hidden='{{logfig}}'>
+    <view class="top" hidden="{{hidden}}" bindtouchstart="handletouchtart" bindtouchmove="handletouchmove" bindtouchend="handletouchend">
+
+       <view class="top-b">
+        <!-- <view class='ptTxt' hidden='{{appUserType!=2}}'>企业用户</view> -->
+        <view class='topIndex' >
+          <view class="baner-left" bindtap='Gocity' style="background-color:rgba(89, 107, 107,0.6);">
+            <image src="{{location}}" class="location" background-size="cover" mode="scaleToFill" bindconfirm="OnclickSubmit"></image>
+            <view class="address" >{{cscname}}</view>
+            <image src="../../images/shouye/daosanjiao.png" class="location" background-size="cover" mode="scaleToFill" bindconfirm="OnclickSubmit"></image>
+          </view>
+          <view class='topJu'>距离{{distance}}km</view>
+        </view>
+
+      </view>
+
+
+      <!-- banner -->
+      <view class="banner_a swiper-container ">
+        <view class="banner">
+          <swiper class="swiper swiper-box swiper-boxa" current="{{current}}" indicator-dots="true" autoplay="false" interval="5000" duration="1000" indicator-active-color="#Fff">
+            <block wx:for="{{Movies}}" wx:for-item="mov" wx:key="key">
+              <swiper-item>
+                <view>
+                  <navigator url="{{mov.Url}}" hover-class="navigator-hover">
+                    <image src="{{mov.Picture}}" class="banner" background-size="cover" mode="scaleToFill"></image>
+                  </navigator>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+
+        <view class="Search">
+          <input type="text" placeholder="请输入产品名称" class="input" confirm-type="search" bindinput="GetText" bindconfirm='OnSearch'></input>
+          <view class='SeaIcon' bindtap="OnSearch">
+            <icon type="search" size="20" style='margin-top:5px;' />
+          </view>
+        </view>
+
+      </view>
+
+   
+
+      <view class="tion">
+        <view class='tion_li'>
+
+          <view>
+
+            <block wx:if="{{appUserType==1}}">
+              <block wx:for="{{Category}}" wx:key="key" wx:for-item="cat" wx:for-index="inx">
+                <block wx:if="{{Activity==1}}">
+                  <block wx:if="{{inx<9}}">
+                    <!--界面跳转 -->
+                    <view id="{{item.Id}}" class='tion_lia' bindtap="tapLogs" data-id="{{cat.Id}}" data-pname="{{cat.Name}}">
+                      <image src='{{cat.ImgUrl}}' class='tion_li_ioc' background-size="cover" mode='scaleToFill'></image>
+                      <text class='tion_li_text'>{{cat.Name}}</text>
+                    </view>
+                  </block>
+                </block>
+                <block wx:else>
+                  <block wx:if="{{inx<10}}">
+                    <!--界面跳转 -->
+                    <view id="{{item.Id}}" class='tion_lia' bindtap="tapLogs" data-id="{{cat.Id}}" data-pname="{{cat.Name}}">
+                      <image src='{{cat.ImgUrl}}' class='tion_li_ioc' background-size="cover" mode='scaleToFill'></image>
+                      <text class='tion_li_text'>{{cat.Name}}</text>
+                    </view>
+                  </block>
+                </block>
+
+              </block>
+            </block>
+            <block wx:else>
+
+              <block wx:for="{{Category}}" wx:key="key" wx:for-item="cat" wx:for-index="inx">
+
+                <block wx:if="{{inx<10}}">
+                  <!--界面跳转 -->
+                  <view id="{{item.Id}}" class='tion_lia' bindtap="tapLogs" data-id="{{cat.Id}}" data-pname="{{cat.Name}}">
+                    <image src='{{cat.ImgUrl}}' class='tion_li_ioc' background-size="cover" mode='scaleToFill'></image>
+                    <text class='tion_li_text'>{{cat.Name}}</text>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+
+          </view>
+          <block wx:if="{{Activity==1}}">
+            <view class='tion_lia' bindtap='fen' hidden='{{appUserType==2}}'>
+              <image src='/images/image_Customer.png' class='tion_li_ioc' background-size="cover" mode='scaleToFill'></image>
+              <text class='tion_li_text'>分享</text>
+            </view>
+          </block>
+
+        </view>
+      </view>
+
+
+      <!--活动专场-->
+      <view class="huodong hd" hidden='{{appUserType==2}}' style='{{HD_style}}'>
+        <view class='hd_img'>
+          <view class='title_w'>
+            <text class='dotted_line'></text>
+            <text class='title_txt'>活动专场</text>
+            <text class='dotted_line'></text>
+          </view>
+          <navigator url="../../pages/index/huodong/huodong?id=1" hover-class="navigator-hover">
+            <view class='more_w'>
+              <text>更多</text>
+              <image class='dl_ka' src='/images/dl_ka.png'></image>
+            </view>
+          </navigator>
+        </view>
+        <view class="huodong_back" wx:for="{{hodong_img}}" wx:key="key">
+          <image src="{{item.Picture}}" data-id='{{item.Id}}' bindtap="OnclickHD" class="huodong_one_img" background-size="cover" mode="scaleToFill"></image>
+        </view>
+      </view>
+
+
+
+
+      <!-- 服务摊位  -->
+      <view class='service_stall' hidden='{{IsBooths==1}}'>
+        <view class='title_w'>
+          <text class='dotted_line'></text>
+          <text class='title_txt'>服务摊位</text>
+          <text class='dotted_line'></text>
+        </view>
+        <view class='search_box'>
+          <view class='input_wrap'>
+            <view class='ptSe' bindtap='OnlickeBtu'>
+              <image class='icon_search' src='/images/icon_search.png'></image>
+            </view>
+            <input type='text' placeholder='搜索市场摊位' bindinput='setText' bindconfirm="OnlickeBtu"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 3 -->
+    <view class='ptInSele' hidden='{{IsBooths==1}}'>
+      <view class='ptInCen'>
+        <view class='ptInCena'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="{{_num == 1?'ptInLing':'ptInLi'}}" data-num="1" bindtap="clickNum">{{array[index]}}
+              <image src='/images/icon_choose.png'></image>
+            </view>
+          </picker>
+        </view>
+        <!-- <view class="{{_num == 1?'ptInLi':'ptInLing'}}" data-num = "1" bindtap="clickNum">全部分类<image src='/images/icon_choose.png'></image></view>  -->
+        <view class="{{_num == 2?'ptInLing':'ptInLi'}}" data-num="2" bindtap="clickNum">好评</view>
+        <view class="{{_num == 3?'ptInLing':'ptInLi'}}" data-num="3" bindtap="clickNum">销量</view>
+      </view>
+    </view>
+
+    <!-- 重写开始 -->
+    <view class='ptIndex' hidden='{{IsBooths==1}}'>
+      <block wx:for="{{SdataList}}" wx:key="key" wx:for-index="sdidx">
+
+        <view class='ptIndexLi' bindtap='GoShopDetail' data-bid='{{item.Id}}'>
+          <view class='ptIndexCen'>
+            <view class='ptImgCen'>
+              <image src='{{item.CoverImage}}'></image>
+
+              <block wx:if="{{!item.IsBusiness}}">
+                <view class='ptDa'>
+                  <text>已打烊</text>
+                </view>
+              </block>
+            </view>
+
+            <view class='ptIndexRight'>
+              <view class='ptInYou'>
+                <view class='ptInTxt'>
+                  <text>{{item.Name}}</text>
+                  <view class='ptInTime'>
+                    <view class='ptYing'>营业时间：</view>
+                    <view class='ptInDay'>
+                      <text>上午：{{item.amTimeText}}</text>
+                      <text>下午：{{item.pmTimeText}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class='ptInYue'>
+                  <text>月销{{item.Volume}}</text>
+                  <view class='ptYueImg ptYueText'>
+                    <view class='evalution_item'>
+                      <text decode='true'>好评&nbsp;&nbsp;</text>
+                      <text>{{item.OneEvaluate}}</text>
+                    </view>
+                    <view class='evalution_item'>
+                      <text decode='true'>中评&nbsp;&nbsp;</text>
+                      <text>{{item.TwoEvaluate}}</text>
+                    </view>
+                    <view class='evalution_item'>
+                      <text decode='true'>差评&nbsp;&nbsp;</text>
+                      <text>{{item.ThreeEvaluate}}</text>
+                    </view>
+                    <!-- <block wx:for="{{item.Evaluate}}" wx:key="ekye">
+                      <image src='/images/icon_stara.png'></image>
+                    </block>
+                    <block wx:for="{{5-item.Evaluate}}" wx:key="ykye">
+                      <image src='/images/icon_stargry.png'></image>
+                    </block> -->
+                  </view>
+                </view>
+              </view>
+
+              <!-- 0 -->
+              <block wx:if="{{appUserType==1}}">
+                <view class='manjian' hidden='{{item.ManCoupon.length==0}}' bindtap='mjToggle'>
+                  <view id='box' class="{{item.init?'show':'h116'}} {{(item.ManCoupon.length + item.ZhiCoupon.length == 1) ? 'h50' : ''}}">
+                    <view class='items_w'>
+                      <view class='each_item'>
+                        <label>满减</label>
+                        <view class='txt_w'>
+                          <block wx:for="{{item.ManCoupon}}" wx:for-index="mcidx" wx:for-item="mcitem" wx:key="mkey">
+                            <block wx:if="{{mcidx==0}}">
+                              <text>{{mcitem.Explanation==null?"":mcitem.Explanation}}</text>
+                            </block>
+                            <block wx:else>
+                              <text>; {{mcitem.Explanation==null?"":mcitem.Explanation}}</text>
+                            </block>
+
+                          </block>
+                        </view>
+                      </view>
+
+                      <block wx:for="{{item.ZhiCoupon}}" wx:for-index="zcidx" wx:for-item="zcitem" wx:key="mkey">
+                        <view class='each_item zd'>
+                          <label>指定满减</label>
+                          <text>{{zcitem.Explanation}}</text>
+                        </view>
+                      </block>
+
+                    </view>
+                  </view>
+
+                  <view class='arrowDown' data-init='{{sdidx}}' hidden='{{(item.ZhiCoupon.length)<=1}}'>
+                    <image class='icon_arrowd' src='/images/icon_arrowR.png'></image>
+                  </view>
+                </view>
+              </block>
+
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">没有了呀，快放手</view>
+
+
+
+    <view class='ptHomeFixe'>
+      <button open-type="contact" session-from="weapp">客服</button>
+      <image src='{{appUserType==2?"/images/image_Customer_lan.png":"/images/image_Customer.png"}}'></image>
+    </view>
+    <view class='icon' hidden='{{TopStyp}}' bindtap='GoTop'>
+      <image src='{{appUserType==2?"/images/icon_top_lan.png":"/images/icon_top.png"}}'></image>
+    </view>
+
+
+
+    <!-- 授权信息 -->
+    <view class="wxapp-modal" style="{{modal_style}}">
+      <view class="content pop">
+        <view>确认授权用户信息！</view>
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权</button>
+      </view>
+      <view class="mask" bindtap="closeModal"></view>
+    </view>
+
+    <!-- 选择弹窗 -->
+    <view class='ptPop' hidden="{{ptflag}}">
+      <view class='ptPopCen'>
+        <image src='/images/sp_aa.png' bindtap='ptPopHide'></image>
+        <text class='ptTit'>请选择</text>
+        <view class='ptUl' hidden="">
+          <block wx:for='{{storeList}}' wx:for-item='ptPop' wx:for-index='id' wx:key='key'>
+            <view class="{{ptPop.Id == cscId ?'ptLiActive':'ptLi'}}" data-num="{{id}}" bindtap="ptPop">{{ptPop.Name}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!-- 弹窗/超出范围 -->
+    <!--<view class='outpop' hidden='{{outpopSH}}'>
+      <view class='pop_w'>
+        <view class='pop_title'>提示</view>
+        <form bindsubmit='closewSubmit' name='closewMsg' report-submit>
+          <button form-type='submit'></button>
+          <image bindtap='icon_closew' class='icon_closew' src='/images/icon_closew.png'></image>
+        </form>
+        <view class='pop_con'>
+          <text>尊敬的用户：</text>
+          <block wx:if="{{appUserType==1}}">
+            <text>您已超出{{dcostvery/1000}}公里配送距离，</text>
+          </block>
+          <block wx:else>
+            <text>您已超出{{QYdcostvery/1000}}公里配送距离，</text>
+          </block>
+
+          <text>只能下自提订单！!</text>
+        </view>
+      </view>
+    </view>-->
+    <view class='outpop' hidden="{{!outpopGGa}}">
+      <view class='pop_w'>
+        <view class='pop_title'>公告</view>
+        <form bindsubmit='IsShowGGClose' name='closewMsg' report-submit>
+          <button form-type='submit'></button>
+          <image bindtap='icon_closegg' class='icon_closew' src='/images/icon_closew.png'></image>
+        </form>
+        <view class='pop_con'>
+          <text>尊敬的用户：</text>
+          <block >
+            <text>{{GGMsg}}</text>
+          </block>
+        </view>
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <!-- 弹窗/位置信息授权 -->
+  <view class='locationPop' hidden='{{locationPoppSH}}'>
+    <view class='lcPop'>
+      <view class='pop_w'>
+        <view class='pop_title'>位置信息授权</view>
+        <form bindsubmit='closewSubmit' name='closewMsg' report-submit>
+          <button form-type='submit'></button>
+          <image bindtap='icon_closew' class='icon_closew' src='/images/icon_closew.png'></image>
+        </form>
+        <view class='pop_con'>
+          <text>位置授权暂未开通，无法完成加载！</text>
+          <view class='pop_btn'>
+            <button>仍然拒绝</button>
+            <button bindtap="openSetting">开启授权</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='yhPop' hidden='{{isFirstLogin}}'>
+
+    <view class='yhPa'>
+      <view class='yhPtxt'>领取优惠券
+        <view class='yhImg' bindtap='CloseCoupon'>
+          <image src='/images/sp_aa.png'></image>
+        </view>
+      </view>
+      <view class='yhTop'>
+        <view class='yhCen'>
+          <block wx:for='{{newCouponList}}' wx:item='item' wx:key='coupon'>
+            <view class='yhCli'>
+              <block wx:if='{{item.IsUsed}}'>
+                <image src='/images/qicon_wlq.png' class='yhCliImg'></image>
+                <!-- 已领取  -->
+              </block>
+              <block wx:else>
+                <image src='/images/qicon_ylq.png' class='yhCliImg'></image>
+              </block>
+              <image src='/images/qimage_pt.png' class='yhCliImga'></image>
+
+              <view class='yhCliDiv'>
+                <view class='yhCa'>
+                  <view style='font-size:12px'>满{{item.FullPrice}}元减{{item.Price}}元</view>
+                  <view style='font-size:12px'>{{item.Explanation}}</view>
+                  <view style='font-size:12px'>{{item.BeginTime}}-{{item.Endline}}</view>
+                  <view></view>
+                </view>
+                <view class='yhCb'>
+                  <block wx:if='{{item.IsUsed}}'>
+                    <view style='background-color:#a1a1a1;color:#fff'>领取</view>
+
+                  </block>
+                  <block wx:else>
+                    <view bindtap='GetUserCoupon' data-couponid='{{item.Id}}'>领取</view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+
+    </view>
+
+
+  </view>
+
+</view>

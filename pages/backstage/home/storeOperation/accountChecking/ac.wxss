@@ -1,0 +1,145 @@
+/* pages/backstage/home/storeOperation/accountChecking/ac.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.ptView{
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30rpx;
+}
+.ptTxt{
+  font-size: 28rpx;
+  color: #999;
+}
+
+.ac_con {
+  font-size: 26rpx;
+  background: #f5f5f5;
+}
+swiper-item{
+  overflow: auto;
+}
+
+.swiper-tab {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+}
+
+.statuLi {
+  line-height:70rpx;
+}
+
+.on {
+  color: #f90;
+  border-bottom: 2px solid #f90;
+}
+
+.noDate_box image {
+  width: 160rpx;
+  height: 249rpx;
+  display: block;
+  margin: 300rpx auto;
+}
+
+.top_bar {
+  background: #e6e6e6;
+  padding: 30rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_bar .w {
+  display: flex;
+}
+
+.top_bar label {
+  color: #7a7a7a;
+  line-height: 50rpx;
+  margin-right: 12rpx;
+}
+
+.input_wrap {
+  width: 200rpx;
+  height: 50rpx;
+  position: relative;
+}
+
+.input_wrap .picker {
+  position: relative;
+  background: #fff;
+  color: #c5c5c5;
+  line-height: 50rpx;
+  border-radius: 3px;
+  text-indent: 10rpx;
+}
+
+.input_wrap image {
+  width: 18rpx;
+  height: 12rpx;
+  position: absolute;
+  top: 21rpx;
+  right: 10rpx;
+}
+
+.bill_lists {
+  background: #fff;
+}
+.each_list {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 30rpx 40rpx;
+}
+.each_list .con_top {
+  display: flex;
+  
+}
+.each_list .con_top text {
+  font-size:28rpx;
+  display: block;
+}
+.each_list .con_top image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+.each_list .con_bottom {
+  color: #666;
+  display: flex;
+}
+.each_list .con_bottom .detail_a {
+  margin-right: 200rpx;
+}
+.total_count .con_bottom .detail_a {
+  margin-right: 130rpx;
+}
+
+.color_f90 {
+  color: #f90;
+}
+.fz40 {
+  font-size:28rpx;
+}
+.spacing {
+  width: 100%;
+  height: 20rpx;
+  background: #f5f5f5;
+}
+
+.acTop{
+  display: flex;
+  align-items: center;
+  padding-bottom: 30rpx;
+}
+
+.acTop .ptTxt{
+  margin-left:33%;
+}

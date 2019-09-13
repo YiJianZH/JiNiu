@@ -1,0 +1,134 @@
+<!--主盒子-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+<movable-area>
+
+  <view class="container" style='{{HtmlStyle}}'>
+
+    <!--左侧栏-->
+    <view class="nav_left">
+      <scroll-view scroll-y='true' class='MenList'>
+        <block wx:for="{{CateItemsList}}" wx:key="key">
+          <view class="nav_left_items {{curNav == item.Id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.Id}}">{{item.Name}}</view>
+        </block>
+      </scroll-view>
+    </view>
+    <!--右侧栏-->
+    <view class="nav_right">
+      <view class='top_content'>
+        <view class='right_text'>
+          <view id="topbar_lists" class='topbar_lists' style="{{width}}">
+             <block wx:for="{{TypeList}}" wx:key="key">
+
+              <view class="each_item {{saNuber==item.Id?'active' : ''}}" bindtap='setpidlist'  data-tid='{{item.Id}}' data-tname='{{item.Name}}'  hidden='{{item.IsHidden}}'>{{item.Name}}</view> 
+            </block>
+
+
+          </view>
+        </view>
+        <view class='open_third' id="slide" bindtap="toggle">
+          <image src='/images/icon_back.png'></image>
+        </view>
+      </view>
+      <view id="box" class="{{first_click?'show':'hide'}} {{state?'open':'close'}}">
+        <view id="item_list">
+          <block wx:for="{{TypeList}}" wx:key="key">
+            <view class="each_item {{saNuber==item.Id?'active' : ''}}" bindtap='toggle' data-tid='{{item.Id}}' data-tname='{{item.Name}}' hidden='{{item.IsHidden}}'>{{item.Name}}</view>
+          </block>
+        </view>
+      </view>
+      <!--如果有数据，才遍历项-->
+      <scroll-view scroll-y='true' class='TypeList' scroll-top="{{soltop}}" upper-threshold='1'  bindscroll="scroll"  scroll-into-view="{{toView}}" >
+        <block wx:for="{{PList}}" wx:for-item="Chitem" wx:key="key">
+          <view class='fl_back' id='sit{{Chitem.Id}}'>
+            <view class='ptLable' hidden='{{Chitem.ProductList.length==0}}'>{{Chitem.Name}}</view>
+            <block wx:for="{{Chitem.ProductList}}" wx:for-item="pitem" wx:key="key">
+              <view class='nav_right_items' >
+                <view class='left' data-pid='{{pitem.Id}}' data-isb='{{pitem.IsStoreBusiness}}' bindtap='productDeil'>
+
+                  <view class='goodImg_w'>
+                    <block wx:if="{{pitem.IsStoreBusiness}}">
+                      <block wx:if="{{pitem.Inventory>0}}">
+                        <image class='good_img' src='{{pitem.Picture}}'></image>
+                      </block>
+                      <block wx:else>
+                        <image class='good_img' src='{{pitem.Picture}}'></image>
+                        <image class='good_img icon_sellout' src='/images/icon_sellout.png'></image>
+                      </block>
+                      
+                    </block>
+                    
+                    <block wx:else>
+                      <block wx:if="{{pitem.Inventory>0}}">
+                        <image class='good_img' src='{{pitem.Picture}}'></image>
+                      </block>
+                      <block wx:else>
+                        <image class='good_img' src='{{pitem.Picture}}'></image>
+                        <image class='good_img icon_sellout' src='/images/icon_sellout.png'></image>
+                      </block>
+                     <view class='ptDa'>
+                         <text>已打烊</text>
+                      </view>
+                    </block>
+                  </view>
+                </view>
+                <view class='right'>
+                  <view class='top' data-pid='{{pitem.Id}}' data-isb='{{pitem.IsStoreBusiness}}' bindtap='productDeil'>
+                    <text class='txt_major'>{{pitem.Title}}{{pitem.Unit}}</text>
+
+                    <block wx:if="{{IsBooths==0}}">
+                      <text class='txt_sub' >店铺：{{pitem.SupplierName}}</text>
+                    </block>
+                    
+
+
+                  </view>
+                  <view class='bottom'>
+                    <view class='txt'>
+                      <text class='price'>￥{{pitem.Price}}</text>
+                       <text class='unit'> ￥{{pitem.OldPrice}}</text> 
+                    </view>
+                    <view class='img'>
+                      <block wx:if="{{pitem.IsCollect}}">
+                        <image src='{{appUserType==2?"/images/sp_b_lan.png":"/images/sp_b.png"}}' bindtap='onColikSC' data-isc='{{pitem.IsCollect}}' data-pid='{{pitem.Id}}'></image>
+                      </block>
+                      <block wx:else>
+                        <image src='{{appUserType==2?"/images/icon_Collection_lan.png":"/images/icon_Collection.png"}}' bindtap='onColikSC' data-isc='{{pitem.IsCollect}}' data-pid='{{pitem.Id}}'></image>
+                      </block>
+
+                      <block wx:if="{{pitem.Inventory>0}}">
+                        <image src='{{appUserType==2?"/images/icon_addbig_lan.png":"/images/icon_addbig.png"}}' data-id="{{pitem.Id}}" data-isb='{{pitem.IsStoreBusiness}}'  data-uit="{{pitem.UnitId}}" bindtap="joinCart"></image>
+                      </block>
+                      <block wx:else>
+                        <image src='/images/icon_addgray.png' data-id="{{pitem.Id}}" data-isb='{{pitem.IsStoreBusiness}}'  data-uit="{{pitem.UnitId}}" bindtap="joinCart"></image>
+                      </block>
+
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+
+
+        <view class="msgeimg">
+          <view class='stext' hidden='{{msgejz}}'>正在载入更多...</view>
+          <view class='stext' hidden='{{msgemy}}'>没有更多了</view>
+        </view>
+      </scroll-view>
+
+    </view>
+
+  </view>
+
+  <!-- 购物车 -->
+  <movable-view x="{{x}}" y="{{y}}" direction="all">
+    <view class='cart' bindtap='cart_show'>
+      <button>购物车</button>
+      <image src='/images/icon_shopw.png'></image>
+      <text>{{nuber}}</text>
+    </view>
+  </movable-view>
+
+</movable-area>
+</view>

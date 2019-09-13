@@ -1,0 +1,61 @@
+<!--pages/home/batchMan/hasSelected/hs.wxml-->
+
+<view class='hs'>
+  <view class='con'>
+    <view class='lists'>
+      <block wx:for="{{ProductList}}" wx:key="unique" wx:for-index="idx">
+  
+
+      <view class='each_list'>
+
+        <view class='w_left'>
+          <view class='w'>
+            <image class='image_fruits' src='{{item.Picture}}'></image>
+          </view>
+          <view class='w'></view>
+        </view>
+
+        <view class='w_right'>
+          <view class='w w100'>
+            <label>标题</label>
+            <view class='input_w'>
+              <input type='text'  value='{{item.Title}}' data-pindx='{{idx}}' bindinput='setTitle'></input>
+            </view>
+          </view>
+          <view class='wrap_a'>
+            <view class='w'>
+              <label class='color_666'>价格￥</label>
+              <view class='input_w'>
+                <input type='digit' value='{{item.Price}}' data-pindx='{{idx}}' bindinput='setPrice'></input>
+              </view>
+            </view>
+            <view class='w'>
+              <label class='color_666'>库存</label>
+              <view class='input_w'>
+                <input type='number' value='{{item.Inventory}}' data-pindx='{{idx}}' bindinput='setInventory'></input>
+              </view>
+            </view>
+          </view>
+          <view class='wrap_a'>
+            <view class='w'>
+              <label class='color_666'>进价￥</label>
+              <view class='input_w'>
+                <input type='digit' value='{{item.InPrice}}' data-pindx='{{idx}}' bindinput='setInPrice'></input>
+              </view>
+            </view>
+            <view class='w'>
+              <label class='color_666'>安全库存</label>
+              <view class='input_w'>
+                <input type='number' value='{{item.SafeStock}}' data-pindx='{{idx}}' bindinput='setSafeStock'></input>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      </block>
+     
+    </view>
+  </view>
+
+  <button bindtap='saveBack'>保存</button>
+</view>

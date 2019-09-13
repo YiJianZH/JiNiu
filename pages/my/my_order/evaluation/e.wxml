@@ -1,0 +1,36 @@
+<!--pages/my/my_order/evaluation/e.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <view class='e'>
+    <block wx:for="{{Storelist}}" wx:for-index="idx" wx:for-item="item" wx:key="key">
+    <view class='spacing'></view>
+      <view class='top'>
+        <image src='{{item.CoverImage}}'></image>
+        <text class='name'>{{item.Name}}</text>
+      </view>
+    <view class='bottom'>
+      <view class='set_score'>
+        <text>打分</text>
+        <view class='scorept'>
+          <view class="{{_num>3?'ptTxting':'ptTxt'}}" data-num="5" bindtap="clickNum">好评</view>
+          <view class="{{_num >1&&_num <4?'ptTxting':'ptTxt'}}" data-num="3" bindtap="clickNum">中评</view>
+          <view class="{{_num == 1?'ptTxting':'ptTxt'}}" data-num="1" bindtap="clickNum">差评</view>
+        </view>
+
+        <!-- <view class='score'>
+        <block wx:for="{{Level}}" wx:key="ekye" wx:for-index="ids">
+          <image src='/images/icon_aa.png' bindtap='butLevel' data-tid='{{ids}}'></image>
+        </block>
+        <block wx:for="{{5-Level}}" wx:key="ekye" wx:for-index="idx">
+           <image src='/images/icon_stargry.png'  bindtap='butLevel' data-tid='{{idx+Level}}'></image>
+        </block>
+      </view> -->
+      </view>
+      <view class='edit_txt'>
+        <textarea placeholder='写下你的评论~' bindinput='setText'></textarea>
+      </view>
+    </view>
+ </block>
+    <button bindtap='butOnclik'>提交</button>
+  </view>
+
+</view>

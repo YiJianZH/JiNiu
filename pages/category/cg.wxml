@@ -1,0 +1,19 @@
+<!--pages/category/cg.wxml-->
+
+<view class='ptTop'>
+<view class='top_show'>
+  <image src='{{image}}'></image>
+</view>
+</view>
+<view class='show_lists'>
+  <block  wx:for="{{cglist}}" wx:key="key">
+  <view class='each_good' data-pid='{{item.Id}}' data-pname='{{item.Name}}'  bindtap='onClicke'>
+    <image src='{{item.ImgUrl}}'></image>
+    <text>{{item.Name}}</text>
+  </view>
+</block>
+  
+</view>
+
+<view class="loading" hidden="{{loading}}">正在载入更多...</view>
+<view class="loading complete" hidden="{{loadingComplete}}">没有了呀，快放手</view>

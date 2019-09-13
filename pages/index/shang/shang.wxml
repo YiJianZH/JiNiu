@@ -1,0 +1,15 @@
+<!--pages/index/shang/shang.wxml-->
+<view class='ptColor'>
+<view class='head'>
+  <view class='headOne' bindtap='ditu'>
+     <view>前往地图</view>
+  </view>
+   <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="GetMore">
+<block wx:for='{{li}}' wx:for-item='li' wx:for-index='id' wx:key='key'>
+  <view class='headUl' bindtap='business' data-id='{{li.Id}}'>
+    <text>{{li.Name}}</text>
+  </view>
+</block>
+ </scroll-view>
+</view>
+</view>

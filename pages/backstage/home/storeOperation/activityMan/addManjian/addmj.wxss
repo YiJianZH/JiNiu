@@ -1,0 +1,199 @@
+/* pages/backstage/home/storeOperation/activityMan/addManjian/addmj.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.lists {
+  padding: 0 30rpx;
+  font-size: 26rpx;
+}
+.lists_con {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+.lists_con .con_input {
+  display: flex;
+}
+.lists_con label {
+  width: 30%;
+  line-height: 45rpx;
+}
+.ttb {
+  display: initial;
+}
+.ttb .con_input {
+  justify-content: space-between;
+  padding:10rpx 0;
+}
+.ttb .con_input + .con_input {
+  border-top: 1px solid #e6e6e6;
+}
+.ttb label {
+  display:block;
+  width: 100%;
+  padding: 10rpx 0;
+}
+.ttb .w {
+  display: flex;
+  width:100%;
+}
+.ttb .w text {
+  line-height: 56rpx;
+}
+.ttb .con_wrap {
+  display: flex;
+}
+.ttb .con_wrap text {
+  display: block;
+  margin: 10rpx 0;
+}
+.ttb .left_wrap {
+  display: flex;
+}
+.ttb .right_wrap {
+  text-align: right;
+  color: #666;
+  margin-top:45rpx;
+  margin-left:35rpx;
+}
+
+.top_bar {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+
+.top_bar .w {
+  display: flex;
+  width:48%;
+}
+
+.top_bar text {
+  width: 190rpx;
+}
+
+.top_bar .input_wrap {
+  width: 316rpx;
+  height: 56rpx;
+  position: relative;
+}
+
+.top_bar .input_wrap .picker {
+  position: relative;
+  background: #fff;
+  color: #c5c5c5;
+  line-height: 56rpx;
+  border-radius: 3px;
+}
+
+.top_bar .input_wrap image {
+  width:20rpx;
+  height:12rpx;
+  position:absolute;
+  top:24rpx;
+  right:10rpx;
+}
+
+.noLabel .input_wrap {
+  margin-left: 0;
+}
+.noLabel .input_wrap {
+  width: 100%;
+}
+.textarea .input_wrap {
+  border: none;
+  height: unset;
+}
+.lists_con textarea {
+  width: 96%;
+  height: 80rpx;
+  padding: 10rpx;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.color_red {
+  color: red;
+}
+.color_666 {
+  color: #666;
+}
+.pb150 {
+  margin-bottom: 150rpx;
+}
+.input_wrap {
+  width: 60%;
+  height: 56rpx;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-left: 20rpx;
+  padding-left:20rpx;
+}
+.input_wrap input {
+  width: 100%;
+  height: 100%;
+}
+.btn_wrap {
+  width: calc(96% / 2);
+  line-height: 80rpx;
+  text-align: center;
+  border: 1px solid #aaa;
+  color: #aaa;
+  border-radius: 6px;
+}
+.isSelected {
+  border: 1px solid #f90;
+  color: #f90;
+}
+.color_999 {
+  color: #999;
+}
+.color_f90 {
+  color: #f90;
+}
+.sb .con_input {
+  display: flex;
+  justify-content: space-between;
+}
+.for_switch {
+  display: flex;
+  justify-content: space-between;
+}
+.for_switch label {
+  width: 100%;
+  line-height: 45rpx;
+}
+switch {
+  zoom: .7;
+}
+.body-view {
+  margin-top:6rpx;
+}
+.good_img {
+  width: 150rpx;
+  height: 150rpx;
+  display: block;
+}
+.icon_del {
+  width: 44rpx;
+  height: 44rpx;
+  margin-top: 49rpx;
+}
+
+button {
+  width: 90%;
+  line-height: 90rpx;
+  color: #fff;
+  background: #f90;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 32rpx;
+  position: fixed;
+  bottom:37rpx;
+  left:5%;
+}
+.mid_wrap{
+  margin-left:18px;
+}

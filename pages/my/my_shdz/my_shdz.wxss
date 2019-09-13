@@ -1,0 +1,184 @@
+/* pages/my/my.wxss */
+.sh_ul_bc{
+  width: 44px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+.sh_ul_bc text{
+  width: 100%;
+  text-align: right;
+  display: block;
+  margin-right: 1em;
+  padding-left: 0px !important;
+  front-size:10px;
+}
+.massgetxt{
+ height:40px;
+width:100%;
+text-align:  center;
+line-height:40px;
+font-size:13px;
+
+}
+.logtxt{
+  color: red;
+}
+
+page{
+  width: 100%;
+   height: 100%;
+   background-color: #f5f5f5;
+   font-family: "微软雅黑";
+}
+.sh_ul{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #fff;
+}
+.sh_ul:nth-child(n+2){
+  margin-top: 30rpx;
+}
+.sh_ul_a{
+  width: 100%;
+   height: auto;
+   border-bottom: solid 1px #e6e6e6;
+}
+.sh_ul_b, .sh_ul_aa{
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.sh_ul_text{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -o-flex-direction: row;
+}
+.sh_ul_text text{
+  width: 50%;
+  font-size: 32rpx;
+  color: #1a1a1a;
+  display: block;
+  line-height: 40rpx;
+  text-align: left;
+}
+.sh_ul_text text:last-child{
+    text-align: right;
+}
+.sh_ul_texta{
+  width: 100%;
+  height: auto;
+}
+.sh_ul_texta text{
+  font-size: 32rpx;
+  color: #1a1a1a;
+    text-align: left;
+    display: block;
+    margin-top:30rpx;
+    line-height: 50rpx;
+}
+
+.sh_ul_b{
+  height:50rpx;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+.sh_ul_b > view{
+  width: 70%;
+  height:inherit;
+  overflow: hidden;
+}
+.sh_ul_b > view:first-child{
+  position: relative;
+}
+.sh_ul_img{
+  width: 34rpx;
+  height: 34rpx;
+  display: block;
+  padding-top:4rpx; 
+  position: absolute;
+  left: 0rpx;
+  top: 50%;
+  margin-top:-17rpx;
+}
+.sh_ul_ba text, .sh_ul_bb > view text{
+  font-size: 30rpx;
+  color: #1a1a1a;
+  line-height:50rpx; 
+  padding-left:1.5em;
+  margin: 0rpx;
+}
+.sh_ul_b > view.sh_ul_bb {
+   font-size: 30rpx;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row; 
+  -moz-flex-direction: row;
+  -o-flex-direction: row; 
+}
+.sh_ul_bb > view{
+  width: 60px;
+  height: 50rpx;
+  position: relative;
+  margin-left: 0.5em;
+}
+.sh_ul_bc_img{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  position: absolute;
+  left: 0rpx;
+  top:50%;
+  margin-top:-20rpx;
+}
+
+.button_a{
+   width: 100%;
+   height: 146rpx;
+   margin-top:30rpx;
+   background-color: #fff;
+   overflow: hidden;
+}
+.button_a button{
+  width: 95%;
+  height: 80rpx;
+  background-color: #47b34e;
+  line-height: 80rpx;
+  font-size: 27rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+  margin-top: 33rpx;
+  margin-bottom: 33rpx;
+}
+.button_a button::after{
+  border: none;
+}
+
+.ptColor{
+  overflow: hidden;
+}
+
+ .ptColor .button_a button{
+  background-color: #0066ff;}
+
+
+
+
+
+
+
+

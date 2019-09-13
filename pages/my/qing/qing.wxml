@@ -1,0 +1,24 @@
+<view class='ptColor'>
+
+<view class="qingTop">
+  <image src='/images/abanner.png'></image>
+</view>
+
+<view class='qingCen'>
+  <view class='li'>
+    <view class='liCen'>
+       <view class='liTxt'><text>*</text>姓名</view>
+       <input type='text' bindinput='InputSave' data-id='name'  placeholder='请填写真是姓名，用于结算'></input>
+    </view>
+  </view>
+<view class='li'>
+    <view class='liCen'>
+       <view class='liTxt'><text>*</text>手机号</view>
+       <input type='number' bindinput='InputSave' data-id='phone' placeholder='请填写真是姓名，用于结算'></input>
+    </view>
+  </view>
+
+</view>
+
+<button type='button' bindtap='ApplyShare' class='qingBtn'>申请成为业务员</button>
+</view>

@@ -1,0 +1,80 @@
+<!--business.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='ptColor'>
+  <!-- <view class='{{appUserType==2?"ptColor":""}}'> -->
+  <view class='bs_one'>
+
+    <!-- <swiper class="swiper swiper-box swiper-boxa" indicator-dots="true" autoplay="false" interval="5000" duration="1000" indicator-active-color="#Fff">
+    <!-- <block wx:for="{{SupplierSwiper}}" wx:for-index="index" wx:key="key">
+      <swiper-item>
+        <view>
+        <block wx:if='{{item.IsJump}}'>
+          <image src="{{item.Picture}}" bindtap='GoUrl' data-url='{{item.Url}}' style='width:100%' class="banner" background-size="cover" mode="scaleToFill"></image>
+          </block>
+           <block wx:else>
+          <image src="{{item.Picture}}"  style='width:100%' class="banner" background-size="cover" mode="scaleToFill"></image>
+          </block>
+        </view>
+      </swiper-item>
+    </block> 
+     <image src="{{StoreInfo.CoverImage}}"  style='width:100%' class="banner" background-size="cover" mode="scaleToFill"></image>
+  </swiper> -->
+    <image style="width:100%;height:450rpx;" src='{{StoreInfo.CoverImage}}'></image>
+    <view class='bs_one_b'>
+      <view class='bs_one_d'>
+        <view class='bs_one_c bs_one_e'>
+          <text class="iconfont icon-dingwei"> {{StoreInfo.Address}}</text>
+        </view>
+        <view class='bs_one_c'>
+          <text class="iconfont icon-font52"> {{StoreInfo.Phone}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!--门店介绍-->
+    <view class='b_md'>
+      <view class='b_md_a'>
+
+        <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+
+
+
+<view class='buPt'>
+  <button type="default" size="{{defaultSize}}" disabled="{{disabled}}" bindtap="default" hover-class="none"> 拨打电话</button>
+</view>
+
+<!--推荐商品-->
+<view class='tj_sp'>
+  <view class='shop_xq_a'>
+    <text>推荐商品</text>
+  </view>
+  <view class='sp_list'>
+    <view class='sp_ul'>
+      <block wx:for='{{sp_li}}' wx:for-item='sp_li' wx:for-index='id' wx:key='key'>
+        <view class='sp_li'>
+
+          <view class='sp_lia'>
+            <image src="{{sp_li.Cover}}" bindtap='GoDetail' data-id='{{sp_li.Id}}' class="shop_li_img" background-size="cover" mode="scaleToFill"></image>
+            <view class='sp_li_b'>
+
+              <text class='sp_li_ba' bindtap='GoDetail' data-id='{{sp_li.Id}}'>{{sp_li.Title}}</text>
+              <view class='sp_li_text' bindtap='GoDetail' data-id='{{sp_li.Id}}'>￥{{sp_li.Price}}/
+                <text>{{sp_li.Unite}}</text>
+              </view>
+
+              <image src="../../images/icon_add.png" bindtap='JoinCart' data-id='{{sp_li.Id}}' data-unit='{{UnitId}}' class="shop_li_ioc" background-size="cover" mode="scaleToFill"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+</view>

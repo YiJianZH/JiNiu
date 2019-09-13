@@ -1,0 +1,52 @@
+<!--pages/home/batchMan/bm.wxml-->
+
+<view class="container">
+  <!--左侧栏-->
+  <view id="nav_left">
+    <scroll-view scroll-y='true' class='MenList mL01'>
+       <view class="nav_left_items {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchRightNav">全部</view>
+       <view class="nav_left_items {{currentTab==-1 ? 'active' : ''}}" data-current="-1" bindtap="switchRightNav">未上架产品</view>
+       <block wx:for="{{TypeList}}" wx:key="key" wx:for-item="tlist"  >
+        <view class="nav_left_items {{currentTab==tlist.Id ? 'active' : ''}}" data-current="{{tlist.Id}}" bindtap="switchRightNav">{{tlist.Name}}</view>
+       </block>
+    </scroll-view>
+  </view>
+  <!--右侧栏-->
+  <view id='nav_right'>
+    <scroll-view scroll-y='true' class='MenList' bindscrolltolower="lower">
+      <view class='box'>
+          <view class="right_lists">
+
+<block wx:for="{{ProductList}}" wx:key="key" wx:for-item="plist" >
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='{{plist.Picture}}'></image>
+                  <text class='good_size'>{{plist.Title}}</text>
+                </view>
+                <view wx:if="{{plist.select}}" bindtap='set_iconSH' data-pid='{{plist.Id}}' data-tid='0'>
+                  <image class='select_img' src='/images/icon_checkboxb.png'></image>
+                </view>
+                <view wx:else bindtap='set_iconSH' data-pid='{{plist.Id}}' data-tid='1'>
+                  <image class='select_img' src='/images/icon_a.png'></image>
+                </view>
+              </view>
+            </view>
+</block>
+          </view>
+    
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class='next_btn'>
+  <view class='selectItem'>
+  <button bindtap='SelectAll'>全选/取消</button>
+  <button bindtap='AllUp'>批量上架</button>
+  <button bindtap='AllLow'>批量下架</button>
+  </view>
+  <view class="selectNext">
+    <button bindtap='next_btn'>下一步</button>
+    </view>
+  </view>
+</view>

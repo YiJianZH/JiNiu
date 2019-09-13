@@ -1,0 +1,42 @@
+
+<view class='citySeach'>
+  <view class='cityCen'>
+    <view class='cityTxt' bindtap='switchcity'>
+      <view class='cityName'>{{cityName}}</view>
+      <image src='/images/icon_choose.png' class='cityDown'></image>
+    </view>
+
+    <view class='cityIn'>
+      <image src='/images/icon_search.png' class='cityInImg' bindtap='setcity'></image>
+      <input type='text' bindinput='setNameText' placeholder='搜索菜场'></input>
+    </view>
+  </view>
+</view>
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" bindcallouttap="bindcallouttap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height:44%; margin-top:47px;"></map>
+<cover-view class='{{appUserType==2?"ptColor":""}}'>
+<cover-view class='cityBg'>
+
+
+    <cover-view class="cityLi" hidden='{{ cityTrue }}'>
+      <block wx:for='{{li}}' wx:for-item='li' wx:for-index='index' wx:key='key'>
+        <cover-view class='li'>
+          <cover-view class='liLeft'>
+            <cover-view class='liLeftTop'>
+              <cover-view class='liA'>{{li.Name}}</cover-view>
+              <cover-image src='{{appUserType==2?"/images/my_l_lan.png":"/images/my_l.png"}}' class='liLeftImg' bindtap='getaddd' data-lat='{{li.Lat}}' data-lng='{{li.Lng}}'></cover-image>
+            </cover-view>
+            <cover-view class='liA liDi'>地址：{{li.Address}}</cover-view>
+          </cover-view>
+          <cover-view class='liRight'>
+            <cover-view class='liB'>{{li.distance}}公里</cover-view>
+            <cover-view class='liRightTxt' bindtap='setCaty' data-idx='{{index}}'>立即选择</cover-view>
+          </cover-view>
+        </cover-view>
+      </block>
+    </cover-view>
+
+
+  
+  <cover-view class="cityWu" hidden='{{ !cityTrue }}'>该城市暂无市场</cover-view>
+  </cover-view>  
+</cover-view>

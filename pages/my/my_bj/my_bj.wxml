@@ -1,0 +1,51 @@
+<!--pages/my/my.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+<form bindsubmit="formSubmit" >
+<view class='bj_ul'>
+    <view class='bj_li'>
+        <view class='bj_li-a' bindtap="updatePicture">
+             <text>{{tx}}</text>
+             <view class='bj_li_b'>
+             <input type='hiden' style='display:none;' name='HeadUrl' id='picture' value='{{pictuerId}}'></input>
+                 <image src='{{bj_li_img}}' class='bj_li_img'  background-size='cover' mode="scaleToFill"></image>
+             </view>
+                 <view class='my_list_ab'>
+                     <image src='{{my_list_img}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+        </view>
+    </view>
+
+
+    <view class='bj_li'>
+        <view class='bj_li-a'>
+             <text>姓名</text>
+             <view class='bj_li_b'>
+             <input type='text'  name='RealName' placeholder="请输入姓名" value='{{name}}'></input>
+                
+             </view>
+                 <view class='my_list_ab'>
+                     
+                 </view>
+        </view>
+    </view>
+
+    <view class='bj_li'>
+        <view class='bj_li-a'>
+             <text>电话</text>
+             <view class='bj_li_b'>
+             <input type='text' name='Integral'  placeholder="请输入电话"  value='{{tel}}' maxlength="11"></input>
+                
+             </view>
+                 <view class='my_list_ab'>
+                    
+                 </view>
+        </view>
+    </view>
+
+  <view class="btn-area">
+        <button formType="submit">提交</button>
+    </view>
+
+</view>
+</form>
+</view>

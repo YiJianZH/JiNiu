@@ -1,0 +1,33 @@
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+<view class='ptTop'>
+  <view class='cityIn'>
+    <image src='/images/icon_search.png' class='cityInImg' bindtap='setcity'></image>
+    <input type='text' bindinput='setNameText' placeholder='搜索城市名称' bindconfirm="getCity" ></input>
+  </view>
+</view>
+<view class="searchLetter touchClass">
+  <view class="thishotText" bindtap="hotCity">
+    <view style="margin-top:0;">当前</view>
+  </view>
+  <view wx:for="{{searchLetter}}" style="color:#47b34e;font-size:20rpx;" wx:key="index" data-letter="{{item.name}}" catchtouchend="clickLetter">{{item.name}}</view>
+</view>
+<block wx:if="{{isShowLetter}}">
+  <view class="showSlectedLetter">
+    {{showLetter}}
+  </view>
+</block>
+<scroll-view scroll-y="true" style="height:{{winHeight}}px" bindscroll="bindScroll" scroll-into-view="{{scrollTopId}}" scroll-top="{{scrollTop}}">
+  <view class="hotcity-common thisCity">当前选择城市</view>
+  <view class="thisCityName">{{city}}</view>
+  <view>
+
+  </view>
+  <view class="selection" wx:for="{{cityList}}" wx:key="{{item.initial}}">
+    <view class="item_letter" id="{{item.initial}}">{{item.initial}}</view>
+    <view class="item_city" wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="{{ct.id}}" data-cityCode="{{ct.code}}"  data-city="{{ct.city}}" bindtap="bindCity" id='T{{ct.code}}'>
+      {{ct.city}}
+    </view>
+  </view>
+</scroll-view>
+</view>

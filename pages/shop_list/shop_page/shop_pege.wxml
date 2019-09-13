@@ -1,0 +1,213 @@
+ <!--shop_page.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+<view hidden='{{masgetye}}'>
+  <import src="../../../wxParse/wxParse.wxml" />
+  <view class='shop_page_a'>
+    <view class='shop_one'>
+      <block wx:if='{{Unit_Inventory==0}}'>
+        <image src='/images/icon_wu.png' class='ptImga'></image>
+      </block>
+
+      <swiper class="swiper swiper-box swiper-boxa" indicator-dots="true" autoplay="false" interval="5000" duration="1000" indicator-active-color="#Fff">
+       
+        <block wx:for="{{movies}}" wx:for-index="index" wx:key="key">
+          <swiper-item>
+            <view class='slide_w'>
+              <image src="{{item}}" class="banner" mode="scaleToFill"></image>
+            </view>
+          </swiper-item>
+        </block>
+
+      </swiper>
+
+    </view>
+
+
+
+
+    <view class='shop_page_b'>
+      <view class='shop_page_ba'>
+        <text class='shop_page_text_a'>{{Title}}{{Unit_Name}}</text>
+        <text class='shop_page_text_b'>{{Deputy}}</text>
+        <view class='shop_page_text_c'>
+          ￥{{Unit_Price}}
+          <text class='sp_a'>/{{Unit_Name}}</text>
+          <text class='sp_b'>￥{{Unit_OldPrice}}</text>
+          <text class='sp_c'>库存:{{Unit_Inventory}}</text>
+        </view>
+
+        <view class='sp_dw' bindtap="OnclikSC">
+          <block wx:if="{{IsCollect}}">
+            <image src='{{appUserType==2?"/images/sp_b_lan.png":"/images/sp_b.png"}}' class='tiont_ioc' background-size="cover" mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image src='/images/sp_a.png' class='tiont_ioc' background-size="cover" mode='scaleToFill'></image>
+          </block>
+
+
+          <text class='sp_c'>收藏</text>
+        </view>
+      </view>
+    </view>
+
+
+    <!--一选-->
+    <view>
+      <view class='shop_page_c sp_bor'>
+        <view class='shop_page_center' bindtap="a">
+          <view class='shop_p_ca'>已选：
+            <text>{{Unit_Name}}</text>
+          </view>
+          <text class="iconfont icon-xiangyou"></text>
+          <text class="numtxt">x{{num}}</text>
+        </view>
+      </view>
+      <view class='shop_page_c'>
+       
+          <view class='shop_page_center' bindtap='business'>
+            <view class='shop_p_ca'>商家黄页</view>
+            <!-- <image src="{{SupplierImg}}" class="shop_sj" background-size="cover" mode="scaleToFill"></image> -->
+            <view class="shop_sj">{{SupplierName}}</view>
+          </view>
+      
+      </view>
+    </view>
+
+
+    <!--商品详情-->
+    <view class='shop_xq'>
+
+      <view class='shop_xq_a'>
+        <view class='shop_xq_b'></view>
+        <text>商品详情</text>
+      </view>
+
+      <view class='shop_xq_img'>
+
+        <image src="{{movies[0]}}" hidden='{{SetImage}}' class="shop_sj_a" background-size="cover" mode="scaleToFill"></image>
+        <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+      </view>
+    </view>
+
+
+    <!--视频展示-->
+     <block wx:if='{{IsPlay}}'>
+    <view class='shop_xq'>
+     
+      <view class='shop_xq_a'>
+        <view class='shop_xq_b'></view>
+        <text>视频展示</text>
+      </view>
+      <video src="{{Video}}" class='piVideoa' controls id='myVideo'  controls='true'></video>
+     
+    </view>
+ </block>
+    <!--推荐商品-->
+    <view class='tj_sp'>
+      <view class='shop_xq_a'>
+        <view class='shop_xq_b'></view>
+        <text>推荐商品</text>
+      </view>
+
+      <view class='sp_list'>
+        <view class='sp_ul'>
+         <!--循环输出开始-->
+          <block wx:for="{{Tuijian}}" wx:for-item="lis" wx:key="key">
+            <view class='sp_li'>
+              <view class='sp_lia'>
+                <navigator url="../../shop_list/shop_page/shop_pege?id={{lis.Id}}" hover-class="navigator-hover">
+                  <image src="{{lis.Picture}}" class="shop_li_img" background-size="cover" mode="scaleToFill"></image>
+                </navigator>
+                <view class='sp_li_b'>
+                  <navigator url="../../shop_list/shop_page/shop_pege?id={{lis.Id}}" hover-class="navigator-hover">
+                    <text class='sp_li_ba'>{{lis.Title}}</text>
+                  </navigator>
+                  <view class='sp_li_text'>{{lis.Price}}
+                    <text>/{{lis.Unit}}</text>
+                  </view>
+                  <image src='{{appUserType==2?"/images/icon_add_lan.png":"/images/icon_add.png"}}' class="shop_li_ioc" background-size="cover" bindtap='JoinCart' data-id='{{lis.Id}}' data-unit='{{lis.UnitId}}' mode="scaleToFill"></image>
+                </view>
+              </view>
+            </view>
+    
+         
+          
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!--显示隐藏-->
+    <view class="b1" hidden="{{flag}}">
+      <view class="t_w">
+        <view class='t_wa'>
+          <view class='t_wb'>
+            <view class='t_wba'>
+              <image src="{{Unit_Picture}}" class="sp_wb" background-size="cover" mode="scaleToFill"></image>
+            </view>
+
+            <view class='t_wb_bb'>
+              <text>￥{{Unit_Price}}</text>
+              <text>库存{{Unit_Inventory}}份</text>
+              <text>已选：{{num}}份</text>
+              <image src="/images/sp_aa.png" class="sp_wbc" background-size="cover" mode="scaleToFill" bindtap="b"></image>
+            </view>
+          </view>
+        </view>
+
+        <view class='t_gui'>
+          <view class='t_gui_a'>规格</view>
+          <view class="location_bottom" hidden="">
+            <block wx:for="{{Unit}}" wx:for-item="untlis" wx:key="key">
+              <view wx:if="{{untlis.IsDefault}}">
+                <view class="add_city" data-id='{{untlis.Id}}' data-price='{{untlis.Price}}' data-name='{{untlis.Name}}' data-Inventory='{{untlis.Inventory}}' data-oprice='{{untlis.OldPrice}}'data-picture='{{untlis.Picture}}' style='background-color:#fbbc5e;' bindtap="clickNum">{{untlis.Name}}</view>
+              </view>
+              <view wx:else>
+                <view class="add_city" data-id='{{untlis.Id}}' data-price='{{untlis.Price}}' data-name='{{untlis.Name}}' style='color:#222;' data-Inventory='{{untlis.Inventory}}' data-picture='{{untlis.Picture}}' data-oprice='{{untlis.OldPrice}}' bindtap="clickNum">{{untlis.Name}}</view>
+              </view>
+
+            </block>
+          </view>
+          <view class='t_gui_c'>
+            <text>数量</text>
+            <!--加减-->
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+    <!--加入购物车-->
+    <view class='sp_jr'>
+      <view class='ptLian'>
+        <button open-type="contact" />
+        <image src='/images/icon_kefu.png'></image>
+        <text>联系客服</text>
+      </view>
+      <form bindsubmit="GWCSubmit" name='GWCMsg' report-submit>
+        <button form-type="submit"  size="{{defaultSize}}" disabled="{{disabled}}"  hover-class="none" bindtap="OnclickGWC"> 加入购物车</button>
+      </form>
+      <form bindsubmit="LJGMSubmit" name='LJGMMsg' report-submit>
+        <button form-type="submit" size="{{defaultSize}}" disabled="{{disabled}}"  hover-class="none" bindtap="OnclikLJGM">立即购买</button>
+      </form>
+    </view>
+  </view>
+</view>
+
+<block wx:if='{{IsPlaying}}'>
+  <view class='piVideo' bindtap='ClosePlay'></view>
+
+</block>
+</view>

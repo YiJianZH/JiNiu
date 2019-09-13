@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="top">
+  <view class='ul'>
+    <template name="banner">
+      <!--界面跳转 -->
+      <view class='li' bindtap="OnclickGo" data-typid='{{Id}}'>
+        <image src="{{Picture}}" class="banner" background-size="cover" mode="scaleToFill"></image>
+      </view>
+    </template>
+    <!--循环输出开始-->
+    <block wx:for="{{HDList}}" wx:for-item="lis" wx:key="key">
+      <template is="banner" data="{{...lis}}" />
+    </block>
+
+  </view>
+
+
+</view>

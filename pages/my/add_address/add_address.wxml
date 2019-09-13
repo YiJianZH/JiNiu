@@ -1,0 +1,66 @@
+
+  <view class='{{appUserType==2?"ptColor":""}}'>
+    <form bindsubmit="formSubmit">
+      <view class="weui-cells">
+
+        <view class="weui-cell weui-cell_input">
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">收货人</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="Name" value="{{ form.Name }}" class="weui-input" type="text" placeholder="收货人姓名" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="Phone" maxlength="11" value="{{ form.Phone }}" class="weui-input" type="tel" placeholder="输入11位手机号码" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">市区</view>
+          </view>
+          <view class="weui-cell__bd">
+            <!-- <input name="Detail" maxlength="11" value="{{ form.Detail}}" class="weui-input" type="tel" placeholder="请选择地址" /> -->
+            <textarea name="Detail" disabled="ture" value="{{ form.Detail}}" class="weui-textarea" placeholder="请选择地址" style="height: 3.3em" />
+            <image bindtap='location' class='icon_marka' src='/images/icon_marka.png'></image>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_textarea">
+          <view class="weui-cell__hd">
+            <view class="weui-label">详细地址</view>
+          </view>
+          <view class="weui-cell__bd">
+            <textarea name="DetailText" value="{{ form.DetailText}}" class="weui-textarea" placeholder="填写街道、楼栋牌号等" style="height: 3.3em" />
+
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">设为默认</view>
+          <view class="weui-cell__ft">
+            <switch name="IsDefault" checked="{{ form.IsDefault }}"  class='swi'/>
+          </view>
+        </view>
+      </view>
+
+      <!-- <view class='addTxet'>
+       <text>尊敬的用户：</text>
+        <text>您有任何疑问都可以请拨打电话: 0825-8191116 询问处理方案，谢谢!
+</text>
+    </view> -->
+
+
+
+      <view class="button-sp-area">
+        <button class="weui-btn" formType="submit" type="primary">保存</button>
+      </view>
+    </form>
+  </view>

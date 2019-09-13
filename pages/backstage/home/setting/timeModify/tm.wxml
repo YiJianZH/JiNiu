@@ -1,0 +1,54 @@
+<!--pages/backstage/home/setting/timeModify/tm.wxml-->
+
+<view class='tm'>
+  <view class='lists'>
+    <view class='mt30'>上午</view>
+    <view class='each_list'>
+      <label>开始时间</label>
+      <view class='w'>
+        <picker  value="{{AMstartDate}}" mode="time" start="00:01" end="23:59" bindchange="bindAMStartDate">
+          <view class="picker">
+            <text>{{AMstartDate}}</text>
+            <image src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='each_list'>
+      <label>结束时间</label>
+      <view class='w'>
+        <picker  value="{{AMendDate}}" mode="time" start="00:01" end="23:59"  bindchange="bindAMEndDate">
+          <view class="picker">
+            <text>{{AMendDate}}</text>
+            <image src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='mt30'>下午</view>
+    <view class='each_list'>
+      <label>开始时间</label>
+      <view class='w'>
+        <picker  value="{{PMstartDate}}" mode="time" start="00:01" end="23:59"  bindchange="bindPMStartDate">
+          <view class="picker">
+            <text>{{PMstartDate}}</text>
+            <image src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='each_list'>
+      <label>结束时间</label>
+      <view class='w'>
+        <picker  value="{{PMendDate}}" mode="time" start="00:01" end="23:59"  bindchange="bindPMEndDate">
+          <view class="picker">
+            <text>{{PMendDate}}</text>
+            <image src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <button bindtap='setTiemText'>确定</button>
+</view>

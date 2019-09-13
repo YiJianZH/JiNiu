@@ -1,0 +1,128 @@
+<!--pages/my/my.wxml-->
+<!--充值-->
+<view class='ptColor'>
+<view class='yj'>
+   <view class='yj_a'>
+       <image src='/images/jf_back.png' class='yj_img'  background-size='cover' mode="scaleToFill"></image> 
+       <view class='yj_b'>
+           <view class='yj_ba'>{{yj_a}}</view>
+           <view class='yj_bb'>
+               <text>{{yj_b}}</text>
+               <view class='yj_bc'>
+                <view class='button' bindtap='ti'>{{yj_d}}</view>
+               </view>
+           </view>
+       </view>
+   </view>
+  
+  <view class='yj_mx'>
+     <text>佣金明细</text>
+  </view>
+
+<view>
+<template name='yj'>
+   <view class='yj_ul'>
+      <view class='li'>
+           <view class='li_a'>{{Source}}
+           <block wx:if="{{PayOut>0}}">
+           <text>－{{Numerical}}</text>
+           </block>
+           <block wx:else>
+           <text>+{{Numerical}}</text>
+           </block>
+           </view>
+           <text class='li_b'>{{CreateTime}}</text>
+      </view>
+   </view>
+ </template> 
+        <!--循环输出开始-->
+ <block wx:for="{{yj}}" wx:for-item="lis">
+          <template is="yj" data="{{...lis}}"/>
+</block> 
+</view>
+</view>
+   <view class='null' hidden='{{isNull}}'>
+          <image src="/images/nocart.png"></image>
+        </view>
+
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

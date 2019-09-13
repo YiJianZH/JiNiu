@@ -1,0 +1,116 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/city/city",
+    "pages/index/dao/dao",
+    "pages/index/switchcity/switchcity",
+    "pages/backstage/home/details/details",
+    "pages/index/fen/fen",
+    "pages/backstage/bs",
+    "pages/backstage/home/home",
+    "pages/backstage/home/ptDing/ptDing",
+    "pages/backstage/home/ptSMDing/ptSMDing",
+    "pages/backstage/home/newGoods/nd",
+    "pages/backstage/home/batchMan/hasSelected/hs",
+    "pages/backstage/home/batchMan/bm",
+    "pages/backstage/ptList/ptList",
+    "pages/backstage/home/storeOperation/so",
+    "pages/backstage/home/storeOperation/accountChecking/innerPage/ip",
+    "pages/backstage/home/storeOperation/accountChecking/ac",
+    "pages/backstage/home/storeOperation/activityMan/addManjian/chooseGoods/cg",
+    "pages/backstage/home/storeOperation/activityMan/addManjian/addmj",
+    "pages/backstage/home/storeOperation/activityMan/am",
+    "pages/backstage/home/setting/timeModify/tm",
+    "pages/backstage/home/setting/setting",
+    "pages/backstage/home/setting/modifyPrinter/mPrinter",
+    "pages/backstage/home/setting/modifyPwd/mPwd",
+    "pages/index/ditu/ditu",
+    "pages/index/huodong/huodong",
+    "pages/index/merchartYellowPage/myp",
+    "pages/index/merchartYellowPage/merchartIntro/mi",
+    "pages/index/shang/shang",
+    "pages/business/business",
+    "pages/category/cg",
+    "pages/logs/logs",
+    "pages/my/qiYe/qiYe",
+    "pages/my/my",
+    "pages/my/my_xiaJi/my_xiaJi",
+    "pages/my/my_order/my_order",
+    "pages/my/my_order/evaluation/e",
+    "pages/my/my_usre/my_usre",
+    "pages/my/my_privacy/privacy",
+    "pages/my/my_yj/my_yj",
+    "pages/my/ti/ti",
+    "pages/my/enconde/enconde",
+    "pages/my/my_recharge/my_recharge",
+    "pages/my/my_rechargeMoney/my_rechargeMoney",
+    "pages/my/my_cj/my_cj",
+    "pages/my/my_tg/my_tg",
+    "pages/my/my_SaleTg/my_SaleTg",
+    "pages/my/my_sc/my_sc",
+    "pages/my/my_dh/my_dh",
+    "pages/my/my_details/my_details",
+    "pages/my/add_address/add_address",
+    "pages/my/my_jfshop/my_jfshop",
+    "pages/my/my_jf/my_jf",
+    "pages/my/my_yh/my_yh",
+    "pages/my/my_yhj/my_yhj",
+    "pages/my/my_sha/my_sha",
+    "pages/my/my_sh/my_sh",
+    "pages/my/my_shdz/my_shdz",
+    "pages/my/my_bj/my_bj",
+    "pages/shop_list/shop_list",
+    "pages/shop_list/shop_money/shop_money",
+    "pages/shop_list/shop_info/shop_info",
+    "pages/shop_list/shop_order/shop_order",
+    "pages/shop_list/shop_cart/shop_cart",
+    "pages/shop_list/shop_page/shop_pege",
+    "pages/backstage/home/setting/modifyName/modifyName",
+    "pages/my/qing/qing"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#47b34e",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#47b34e"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#47b34e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon_home.png",
+        "selectedIconPath": "images/icon_homea.png"
+      },
+      {
+        "pagePath": "pages/category/cg",
+        "text": "分类",
+        "iconPath": "images/icon_type.png",
+        "selectedIconPath": "images/icon_typea.png"
+      },
+      {
+        "pagePath": "pages/shop_list/shop_cart/shop_cart",
+        "text": "购物车",
+        "iconPath": "images/icon_shop.png",
+        "selectedIconPath": "images/icon_shopa.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/icon_my.png",
+        "selectedIconPath": "images/icon_mya.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

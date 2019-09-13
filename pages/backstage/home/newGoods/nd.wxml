@@ -1,0 +1,202 @@
+<view class='nd' hidden='{{imageFixed}}'>
+  <view class='lists'>
+
+    <!-- <view class='lists_con'>
+      <label>所属市场</label>
+      <view class='con_input'>
+        <input type='text' placeholder='宁波市海曙区联丰市场'></input>
+      </view>
+    </view> -->
+
+    <view class='lists_con'>
+      <label>所属店铺</label>
+      <view class='con_input'>
+        <input type='text' placeholder='请输入与店铺名称' disabled='true' value='{{storeName}}'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>商品1级分类</label>
+      <view class='con_input'>
+        <picker bindchange='bindPickerChange' value='{{goods_primary[index].Name}}' range-key="{{'Name'}}" range='{{goods_primary}}'>
+          <view class='picker'>
+            <input type='text' disabled='disable' placeholder='请选择' value="{{Onetext}}"></input>
+            <image class='arrow_right' src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>商品2级分类</label>
+      <view class='con_input'>
+        <picker bindchange='twoPickerChange' value='{{goods_second[index].Name}}' range-key="{{'Name'}}" range='{{goods_second}}'>
+          <view class='picker'>
+            <input type='text' disabled='disable' placeholder='请选择' value="{{Twotext}}"></input>
+            <image class='arrow_right' src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>商品3级分类</label>
+      <view class='con_input'>
+        <picker bindchange='threePickerChange' value='{{goods_third[index].Name}}' range-key="{{'Name'}}" range='{{goods_third}}'>
+          <view class='picker'>
+            <input type='text' disabled='disable' placeholder='请选择' value="{{Threetext}}"></input>
+            <image class='arrow_right' src='/images/dl_ka.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>标题</label>
+      <view class='con_input'>
+        <input type='text' placeholder='输入标题文字' bindinput='setTitle'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>副标题</label>
+      <view class='con_input'>
+        <input type='text' placeholder='输入副标题文字' bindinput='setDeputy'></input>
+      </view>
+    </view>
+
+    <view class='lists_con slide_img'>
+      <label>轮播图</label>
+      <view class='con_input'>
+        <view class='up_img'>
+          <block wx:for="{{SlidePicList}}" wx:key="img">
+            <view class='each_img' bindtap='UpdateSlidePic' data-id='{{item.id}}'>
+              <image src='{{item.pic}}'></image>
+            </view>
+          </block>
+          <image src='/images/image_upImg.png' bindtap='AddSlidePic'></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='spacing'></view>
+
+  <view class='lists'>
+
+    <view class='label size_label'>
+      <label>规格</label>
+    </view>
+
+    <view class='lists_con goods_img'>
+      <label>规格图片</label>
+      <view class='con_input'>
+        <view class='up_img'>
+          <block wx:if="{{ProductPic.pid>0}}">
+            <view class='each_img' bindtap='AddProductPic'>
+              <image src='{{ProductPic.pic}}'></image>
+            </view>
+          </block>
+          <block wx:else>
+            <image src='/images/image_upImg.png' bindtap='AddProductPic'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>单位</label>
+      <view class='con_input'>
+        <input type='text' placeholder='输入单位' bindinput='setUidtName'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>价格</label>
+      <view class='con_input'>
+        <input type='digit' placeholder='输入商品价格' bindinput='setPrice'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>进价
+        <text>选填</text>
+      </label>
+      <view class='con_input'>
+        <input type='digit' placeholder='输入商品进价' bindinput='setInPrice'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>库存</label>
+      <view class='con_input'>
+        <input type='number' placeholder='输入库存' bindinput='setInventory'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>安全库存
+        <text>选填</text>
+      </label>
+      <view class='con_input'>
+        <input type='number' placeholder='输入安全库存' bindinput='setSafeStock'></input>
+      </view>
+    </view>
+
+    <view class='lists_con'>
+      <label>是否上架</label>
+      <view class="body-view">
+        <switch checked bindchange="switch1Change" />
+      </view>
+    </view>
+    <view class='lists_con '>
+      <label>是否批发规格</label>
+      <view class="body-view">
+        <switch checked="{{isRestaurant}}" bindchange="switchPf" />
+      </view>
+    </view>
+    <view class='lists_con' hidden='{{!isRestaurant}}'>
+      <label>批发起始量</label>
+      <view class='con_input'>
+        <input type='number' placeholder='输入批发起始量' bindinput='setRestNuber'></input>
+      </view>
+    </view>
+
+    <button bindtap='OnlicSave'>上传</button>
+
+  </view>
+</view>
+
+<!--裁剪图片浮层-->
+<view class='fixed-upimg' wx:if="{{imageFixed}}">
+  <view class="wx-content-info">
+
+    <view wx:if="{{isShowImg}}" class="wx-corpper" style="width:{{cropperInitW}}rpx;height:{{cropperInitH}}rpx;background:#000">
+      <view bindtap='upLoad' class="wx-corpper-content" style="width:{{cropperW}}rpx;height:{{cropperH}}rpx;left:{{cropperL}}rpx;top:{{cropperT}}rpx">
+        <image src="{{imageSrc}}" style="width:{{cropperW}}rpx;height:{{cropperH}}rpx"></image>
+        <view class="wx-corpper-crop-box" bindtouchstart="contentStartMove" bindtouchmove="contentMoveing" style="width:{{cutW}}rpx;height:{{cutH}}rpx;left:{{cutL}}rpx;top:{{cutT}}rpx">
+          <view class="wx-cropper-view-box">
+            <view class="wx-cropper-dashed-h"></view>
+            <view class="wx-cropper-dashed-v"></view>
+            <view class="wx-cropper-line-t" data-drag="top" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-line-r" data-drag="right" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-line-b" data-drag="bottom" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-line-l" data-drag="left" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-t" data-drag="top" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-tr" data-drag="topTight"></view>
+            <view class="wx-cropper-point point-r" data-drag="right" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-rb" data-drag="rightBottom" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-b" data-drag="bottom" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-bl" data-drag="bottomLeft"></view>
+            <view class="wx-cropper-point point-l" data-drag="left" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+            <view class="wx-cropper-point point-lt" data-drag="leftTop"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <canvas canvas-id="myCanvas" style="position:absolute;border: 1px solid red; width:{{imageW}}rpx;height:{{imageH}}rpx;top:-9999px;left:-9999px;"></canvas>
+    <button type="primary" bindtap="getImageInfo" style="position:fixed;bottom:120rpx;width:90%;left:50%;transform:translate3d(-50%,0,0)"> 确认提交 </button>
+
+  </view>
+</view>

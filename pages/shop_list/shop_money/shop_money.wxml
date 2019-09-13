@@ -1,0 +1,23 @@
+<!--shop_cart.wxml-->
+<view class="page">
+   <view class='money_a'>
+        <view class='money_img'>
+             <image src='{{imga}}' class='money_imga'  background-size='cover' mode="scaleToFill"></image>
+             <text class='money_text'>{{zfcg}}</text>
+        </view>
+        
+        <view class='money_b'>
+      
+        <text class='money_ba'>订单编号：<text>{{OrderNumber}}</text></text>
+        <text class='money_ba'>交付时间：<text>{{DeliveryTime}}</text></text>
+        <text class='money_ba'>订单金额：<text>￥{{OrderAmount}}</text></text>
+    
+        
+        </view>
+        <view class='money_c'>
+            <text>{{ts}}</text>
+            <text>{{p}}</text>
+        </view>
+        <view>{{Timeout}}秒后跳转页面</view>
+   </view> 
+</view>

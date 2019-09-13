@@ -1,0 +1,46 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='ptColor'>
+<view class='head'>
+  <image src='/images/abanner.png'></image>
+  <view class='headOne'>
+    <view class='ha'>
+      <image src='/images/abga.png'></image>
+      <view class='haa'>
+        <view class='hab'>
+          <text>{{couponMoney}}元</text>
+        </view>
+        <view class='hac'>新用户领券</view>
+      </view>
+    </view>
+    <block wx:for="{{newCouponList}}" wx:for-item="item" wx:key="cpupon">
+      <view class='ha'>
+        <image src='/images/abga.png'></image>
+        <view class='haa'>
+          <view class='hab'>{{item.FullPrice}}
+            <text>元减{{item.Price}}</text>
+          </view>
+          <view class='hac'>优惠券{{item.FullNum}}张</view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+<view class='headTop'>
+  <view class='headA' bindtap='ShareFace'>立即邀请朋友</view>
+  <view class='headB' bindtap='ShareFace'>
+    <image src='/images/aqr.png'></image>
+    <text>面对面邀请</text>
+  </view>
+  <view class='headC'>
+    <text class='headTxt' decode='true'>— 活动规则 —</text>
+    <view class='headCen'>
+
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+  </view>
+</view>
+</view>

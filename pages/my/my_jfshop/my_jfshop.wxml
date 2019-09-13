@@ -1,0 +1,56 @@
+<!--pages/my/my.wxml-->
+<view class='ptColor'>
+<view class='jfshop'>
+    <view class='banner'>
+    <swiper class="swiper swiper-box swiper-boxa" indicator-dots="true" autoplay="false" interval="5000" duration="1000" indicator-active-color="#Fff">
+        <block wx:for="{{banner}}" wx:for-item="mov" wx:key="key">
+          <swiper-item>
+            <view>
+            <block wx:if="{{IsJump}}">
+              <navigator url="../../pages/index/huodong/huodong" hover-class="navigator-hover">
+              <image src="{{mov.Picture}}" class="banner" background-size="cover" mode="scaleToFill"></image>
+              </navigator>
+              </block>
+              <block wx:else>
+               <image src="{{mov.Picture}}" class="banner" background-size="cover" mode="scaleToFill"></image>
+              </block>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+         
+    </view>
+  
+    <view class='jfshop_a'>
+        <view class='jfshop_b'>我的积分<text>{{Integral}}</text></view>
+    </view>
+
+    <view class='ul'>
+
+<template name='li'>
+        <view class='li'>
+            <image src='{{Picture}}' class='li_img' background-size="cover" mode='mode="scaleToFill' ></image>
+            <view class='li_center'>
+               <text class='li_text'>{{Name}}</text>
+               <view class='li_a'>{{Integral}}<text>积分</text> 
+                  <view class='button' bindtap="exchange"  data-id="{{Id}}">兑换</view>
+               </view>
+            </view>
+        </view>
+</template>
+          <!--循环输出开始-->
+        <block wx:for="{{li}}" wx:for-item="lis" wx:key="lis">
+          <template is="li" data="{{...lis}}"/>
+        </block>
+
+
+<view class='null' hidden='{{isNull}}'>
+          <image src="/images/nocart.png"></image>
+        </view>
+    </view>
+
+</view>
+ <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+
+        </view>

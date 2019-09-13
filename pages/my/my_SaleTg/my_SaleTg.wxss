@@ -1,0 +1,118 @@
+/* pages/my/my.wxss */
+page{
+  width: 100%;
+   height: 100%;
+   background-color: #f5f5f5;
+   font-family: "微软雅黑";
+   overflow: hidden;
+}
+.tg{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.tg_img{
+  width: 750rpx;
+  height: 1334rpx;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+.tg_one{
+  width: 90%;
+  height: 500px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 80rpx;
+  margin-left: -45%;
+  z-index: 999;
+  margin-top: -40rpx;
+}
+.logo{
+  width:120rpx;
+  height: 136rpx; 
+  margin: 0 auto;
+}
+.logo_img{
+  width: 100%;
+  height: 100%;
+  display: block
+}
+.logo_ewm{
+  width: 629rpx;
+  height: 766rpx;
+  margin:34rpx auto 0 auto;
+  position: relative;
+  background-color:#fff;
+
+}
+.ewm{
+  width: 630rpx;
+  height: 630rpx;
+  display: block;
+}
+.logo_ewm_a{
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 30rpx;
+  color: #1a1a1a;
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 40rpx;
+  margin-left: -40%;
+  text-align: center;
+  line-height: 50rpx;
+}
+.tg_two{
+  width: 80%;
+  height: auto;
+  margin:64rpx auto 0 auto;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

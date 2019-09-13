@@ -1,0 +1,13 @@
+<map
+  id="map"
+  longitude="{{lng}}"
+  latitude="{{lat}}"
+  scale="14"
+ 
+  markers="{{markers}}"
+  bindmarkertap="markertap"
+  enable-zoom="true"
+  enable-scroll="true"
+  show-location
+  style="width: 100%; height: 100%;"
+></map>

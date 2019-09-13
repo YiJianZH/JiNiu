@@ -1,0 +1,100 @@
+<!--pages/my/my.wxml-->
+<view class='ptColor'>
+<view class='yj'>
+<view class='yjDivA'>
+<!-- <text>上级用户：{{upShareName}}</text> -->
+<!-- <text>当前用户总销售额：{{TotleMoney}}</text>
+<text>当前用户合计分成：{{ShareMoney}}</text> -->
+<view>
+<text>下级总销售额：{{userTotleMoney}}</text>
+<text>下级合计分成：{{userShareMoney}}</text>
+</view>
+<view>
+<text>当前下级销售额：{{TotleMoney}}</text>
+<text>当前下级分成：{{ShareMoney}}</text>
+</view>
+</view>
+<view class='yjDiv'>
+  <view class='yj_mx'>
+
+   <view class='yjTop'>
+    <view class='homeOneLi'>
+      <text>起始时间</text>
+      <view class='homeLiDiv'>
+        <view>
+          <picker mode="date" value="{{dateA}}" start="2015-09-01" end="" bindchange="bindDateChangeA">
+            <text class="picker">{{dateA}}</text>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+   <view class='yjTop'>
+    <view class='homeOneLi'>
+      <text>结束时间</text>
+      <view class='homeLiDiv'>
+        <view>
+          <picker mode="date" value="{{date}}" start="2019-09-01" end="" bindchange="bindDateChange">
+            <text class="picker">{{date}}</text>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+  </view>
+
+  <view class='cen'>
+
+    <view class='left'>
+      <view class='leftUl'>
+         <block wx:for='{{shareUser}}' wx:for-item='item' wx:for-index='index' wx:key='key'>
+          <block wx:if='{{_num== item.Id}}'>
+            <view class="leftLiActive" data-num="{{item.Id}}" bindtap="clickNum">
+              <view>
+              <text>{{item.Name}}</text>
+              <text>{{item.CreateTime}}</text>
+              </view>
+              <!-- <view>推广日期:<view> -->
+            </view>
+          </block>
+          <block wx:else>
+            <view class="leftLi" data-num="{{item.Id}}" bindtap="clickNum">
+              <text>{{item.Name}}</text>
+            </view>
+          </block>
+        </block> 
+      </view>
+    </view>
+
+    <view class='yj_ul'>
+       <!-- <view class='li'>
+        <view class='liTop'>
+          <view class='li_a li_ab'>订单编号：01111</view>
+           <view class='li_a li_ab'>订单金额：￥20.00 </view>
+          <view class='li_a li_c'>下单用户：
+            <text class='liTxt'>钱钱</text>
+          </view>
+          <text class='li_b'>2019-03-20</text>
+        </view>
+      </view>  -->
+      <block wx:for='{{ShareRecord}}' wx:for-item='item' wx:for-index='index' wx:key='key'>
+      <view class='li'>
+        <view class='liTop'>
+          <view class='li_a li_ab'>订单编号：{{item.orderNo}}</view>
+          <view class='li_a li_ab'>订单金额：￥{{item.OrderMoney}} </view>
+          <view class='li_a li_c'>下单用户：{{item.userName}}</view>
+          <view class='li_a '>业务分成：￥{{item.Money}}</view>
+          <text class='li_b'>下单时间：{{item.Time}}</text>
+        </view>
+      </view>      
+</block>
+<view class='nodata' hidden='{{IsNone}}'>还没有消费哦！</view>
+<view class='nodata' hidden='{{IsMotre}}'>上拉加载更多！</view>
+<view class='nodata' hidden='{{IsNoMore}}'>没有更多了！</view>
+    </view>
+
+
+  </view>
+</view>
+</view>

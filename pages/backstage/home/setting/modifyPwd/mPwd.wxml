@@ -1,0 +1,21 @@
+<!--pages/backstage/home/setting/modifyPwd/mPwd.wxml-->
+
+<view class='mPwd'>
+  <view class='lists'>
+    <!-- <view class='each_list'>
+      <label>当前密码</label>
+      <view class='w'>
+        <input type='number' placeholder='输入当前密码'></input>
+      </view>
+    </view>
+     -->
+    <view class='each_list'>
+      <label>新密码</label>
+      <view class='w'>
+        <input type='text' placeholder='输入新密码' bindinput='setPwd' ></input>
+      </view>
+    </view>
+  </view>
+
+  <button bindtap='OnlickSave' >确定</button>
+</view>

@@ -1,0 +1,5 @@
+
+  <map id="map" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}"  controls ="{{controls}}" bindmarkertap="markertap" bindcallouttap="callouttap" style='width:100%;height:800px'></map>
+<cover-view class='one' bindtap='shang'>
+ <cover-image class='oneImg' src="/images/df.png"></cover-image>
+</cover-view>

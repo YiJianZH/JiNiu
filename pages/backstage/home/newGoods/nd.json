@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#FF9900",
+  "navigationBarTitleText": "新建商品",
+  "enablePullDownRefresh": false
+}

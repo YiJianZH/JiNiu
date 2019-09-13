@@ -1,0 +1,47 @@
+/* pages/my/my_privacy/privacy.wxss */
+
+
+view.center{
+  width: 95%;
+  margin:20rpx auto 0 auto;
+  height: auto;
+  overflow: hidden;
+  font-size:28rpx;
+  color: #333;
+  line-height: 50rpx;
+}
+
+.view{
+  font-size:28rpx;
+  color: #333;
+  text-indent: 2em;
+}
+
+text.head{
+  font-size:28rpx;
+  color: #333;
+  display: block;
+font-weight: bold;
+text-indent: 1em;
+padding-bottom:12rpx;
+padding-top:12rpx;
+
+}
+
+view > text{
+  font-size:28rpx;
+  color: #333;
+font-weight: bold;
+}
+
+.xia{
+  margin-top: 30rpx;
+}
+
+.width{
+  width: 100%;
+}
+
+.center > view{
+  margin-top: 20rpx;
+}

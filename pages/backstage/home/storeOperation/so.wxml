@@ -1,0 +1,71 @@
+<!--pages/home/storeOperation/so.wxml-->
+
+<view class='so'>
+  <view class='lists' bindtap='to_activityMan'>
+    <view class='left_wrap'>
+      <image class='icon_huodong' src='/images/icon_huodong.png'></image>
+      <text>活动管理</text>
+    </view>
+    <view class='right_wrap'>
+      <image class='icon_goArrow' src='/images/icon_goArrow.png'></image>
+    </view>
+  </view>
+
+  <view class='lists' bindtap='to_accountChecking'>
+    <view class='left_wrap'>
+      <image class='icon_huodong' src='/images/icon_shangjia.png'></image>
+      <text>商家对账</text>
+    </view>
+    <view class='right_wrap'>
+      <image class='icon_goArrow' src='/images/icon_goArrow.png'></image>
+    </view>
+  </view>
+
+  <view class='lists' bindtap='to_scanCode'>
+    <view class='left_wrap'>
+      <image class='icon_huodong' src='/images/icon_sys.png'></image>
+      <text>扫一扫</text>
+    </view>
+    <view class='right_wrap'>
+      <image class='icon_goArrow' src='/images/icon_goArrow.png'></image>
+    </view>
+  </view>
+
+    <view class='lists' bindtap='ptList'>
+    <view class='left_wrap'>
+      <image class='icon_huodong' src='/images/icon_sysa.png'></image>
+      <text>企业折扣管理</text>
+    </view>
+    <view class='right_wrap'>
+      <image class='icon_goArrow' src='/images/icon_goArrow.png'></image>
+    </view>
+  </view>
+
+</view>
+
+<view class='tabBar'>
+  <view class='lists'>
+    <view class='con_info'>
+      <view class='w' bindtap='ptDing'>
+        <image src='/images/pt_icon.png'></image>
+        <text>订单</text>
+      </view>
+      <view class='w' bindtap='to_home'>
+        <image src='/images/icon_home.png'></image>
+        <text>商品管理</text>
+      </view>
+      <view class='w' bindtap='to_so'>
+        <image src='/images/icon_mendiana.png'></image>
+        <text class='color_f90'>门店运营</text>
+      </view>
+      <view class='w' bindtap='to_setting'>
+        <image src='/images/icon_shezhi.png'></image>
+        <text>设置</text>
+      </view>
+      <view class='w' bindtap='to_client'>
+        <image src='/images/icon_home.png'></image>
+        <text>回到商城</text>
+      </view>
+    </view>
+  </view>
+</view>

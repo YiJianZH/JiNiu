@@ -1,0 +1,56 @@
+<!--pages/my/my.wxml-->
+<view class='ptColor'>
+<view class='yj'>
+  <view class='yj_a'>
+    <image src='{{appUserType==2?"/images/jf_back_lan.png":"/images/jf_back.png"}}' class='yj_img' background-size='cover' mode="scaleToFill"></image>
+    <view class='yj_b'>
+      <view class='yj_ba'>{{yj_a}}</view>
+      <view class='yj_bb'>
+        <text>￥{{yj_b}}</text>
+        <view class='yj_bc'>
+          <!-- <navigator url="../../../pages/my/my_rechargeMoney/my_rechargeMoney?id=1" hover-class="navigator-hover">
+            <view class='button'>{{yj_c}}</view>
+          </navigator> -->
+          <navigator url="../../../pages/my/my_rechargeMoney/my_rechargeMoney?id=2" hover-class="navigator-hover">
+            <view class='button'>{{yj_d}}</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='yj_mx'>
+    <text>余额明细</text>
+    <!-- <image src="{{imge}}"></image>-->
+  </view>
+
+  <view>
+    <template name='yj'>
+      <view class='yj_ul'>
+        <view class='li'>
+          <view class='li_a'>{{Source}}
+            <block wx:if="{{PayOut>0}}">
+              <text>－￥{{Numerical}}</text>
+            </block>
+            <block wx:else>
+              <text>+￥{{Numerical}}</text>
+            </block>
+          </view>
+          <text class='li_b'>{{CreateTime}}</text>
+          <block wx:if="{{Source=='提现'}}">
+            <text class='li_b' style="float:right;">{{IsAudit}}</text>
+          </block>
+          <block wx:else>
+          </block>
+
+        </view>
+      </view>
+    </template>
+    <!--循环输出开始-->
+    <block wx:for="{{yj}}" wx:for-item="lis" wx:key="key">
+      <template is="yj" data="{{...lis}}" />
+    </block>
+  </view>
+</view>
+
+</view>

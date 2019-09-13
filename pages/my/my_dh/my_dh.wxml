@@ -1,0 +1,134 @@
+<!--index.wxml-->  
+
+<view class='ptColor'>
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待兑换</view>  
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已兑换</view>  
+</view>  
+  <block wx:if="{{flag}}">
+  
+ <view class="b1" hidden="{{flag}}" style="display:none;">
+     <view class="t_w">
+        <view class="t_image" bindtap="b">
+              <image class="t_image1" src="{{picture}}"></image>
+              <view class='ba'>
+                   <view class='ba_a'></view>
+                   <view class='ba_b'>请向工作人员展示兑换二维码</view>
+                   <view class='ba_c'>{{cp_title}}</view>
+                   <view class='ba_c'><text>{{cp_sl}}</text>{{jf}}</view>
+              </view>
+        </view>     
+     </view>
+</view> 
+</block>
+<block wx:else>
+  <view class="b1" hidden="{{flag}}" style="display:block;">
+     <view class="t_w">
+        <view class="t_image"  bindtap="b">
+              <image class="t_image1" src="{{picture}}"></image>
+              <view class='ba'>
+                   <view class='ba_a'></view>
+                   <view class='ba_b'>请向工作人员展示兑换二维码</view>
+                   <view class='ba_c'>{{cp_title}}</view>
+                   <view class='ba_c'><text>{{cp_sl}}</text>{{jf}}</view>
+              </view>
+        </view>     
+     </view>
+</view> 
+</block>
+
+
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px;overflow:scroll;" bindchange="bindChange">  
+    <!-- 全部 -->  
+    <swiper-item>  
+
+   <template name="ulb">
+      <view class='ul'>
+         <view class='li'>
+             <view class='li-one'>
+                <view class='li_a'>订单编号：<text>{{OrderNo}}</text></view>
+                <block wx:if="{{IsUse}}">
+                <view class='li_b'>已兑换</view>
+                </block>
+                <block wx:else>
+                <view class='li_b'>待兑换</view>
+                </block>
+             </view>
+             <block wx:if="{{IsUse}}">
+             <view class='li-two' style="display:none;"  bindtap="a">
+                
+             </view>
+             </block>
+             <block wx:else>
+             <view class='li-two' style="display:block;"  bindtap="clickButton"  data-orderid='{{OrderNo}}'>
+                 <button type="defaule">领用二维码</button>
+             </view>
+             </block>
+         </view>
+      </view>  
+   </template> 
+        <!--循环输出开始-->
+        <block wx:for="{{ulb}}" wx:for-item="lis" wx:key="lis">
+          <template is="ulb" data="{{...lis}}"/>
+        </block>
+<block wx:if="{{IsNAN}}">
+<view class='null'><image src="/images/nocart.png"></image></view>
+</block>
+    </swiper-item>  
+
+
+    <!-- da兑换 -->  
+    <swiper-item>  
+
+   <template name="ul">
+      <view class='ul'>
+         <view class='li'>
+             <view class='li-one'>
+                <view class='li_a'>订单编号：<text>{{OrderNo}}</text></view>
+                <view class='li_b'>待兑换</view>
+             </view>
+             <view class='li-two'  bindtap="clickButton" data-orderid='{{OrderNo}}'>
+                 <button type="defaule">领用二维码</button>
+             </view>
+         </view>
+      </view>  
+   </template> 
+        <!--循环输出开始-->
+        <block wx:for="{{ul}}" wx:for-item="lis" wx:key="lis">
+          <template is="ul" data="{{...lis}}"/>
+        </block>
+<block wx:if="{{IsNAN}}">
+<view class='null'><image src="/images/nocart.png"></image></view>
+</block>
+    </swiper-item>  
+
+
+    <!-- 我是嘿嘿 -->  
+    <swiper-item>  
+    
+  <template name="ula">
+      <view class='ul'>
+         <view class='li'>
+             <view class='li-one'>
+                <view class='li_a'>订单编号：<text>{{OrderNo}}</text></view>
+                <view class='li_b li_c'>已兑换</view>
+             </view>
+         </view>
+      </view>  
+   </template> 
+        <!--循环输出开始-->
+        <block wx:for="{{ula}}" wx:for-item="lis" wx:key="lis">
+          <template is="ula" data="{{...lis}}"/>
+        </block>
+<block wx:if="{{IsNAN}}">
+<view class='null'><image src="/images/nocart.png"></image></view>
+</block>
+    </swiper-item>  
+
+
+
+
+</swiper>  
+</view>

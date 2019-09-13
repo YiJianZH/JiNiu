@@ -1,0 +1,56 @@
+
+page{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.login .logo {
+display:block;
+width:380rpx;
+height:440rpx;
+margin:0 auto;
+}
+.login_input {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20rpx;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 32rpx;
+}
+.login_input .icon_input {
+  width:50rpx;
+  height:40rpx;
+  display:block;
+  margin-top:6rpx;
+  margin-right:25rpx;
+}
+.login_input input {
+  width: 100%;
+  height: 100%;
+}
+
+.w {
+  padding: 0 80rpx;
+  font-size: 28rpx;
+}
+.w .w_con {
+  padding: 30rpx 0;
+  display: flex;
+}
+.icon_checkbox {
+  width: 36rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+}
+
+button {
+  background: #f90;
+  width: 82%;
+  line-height: 100rpx;
+  margin: 0 auto;
+  color: #fff;
+  border-radius: 40px;
+  font-size: 34rpx;
+  margin-top: 100rpx;
+}

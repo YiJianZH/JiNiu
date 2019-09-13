@@ -1,0 +1,65 @@
+<!--shop_info.wxml-->
+<view class='info_one'>
+  <view class='info_head'>
+    <text>共计{{Nuber}}种</text>
+  </view>
+ 
+  <template name="info_li">
+  
+    <view class='info_ul'>{{name}}</view>
+    <view class='info_ul'>
+
+      <block wx:for="{{Plist}}" wx:for-item="plis" wx:key="pkey">
+       <view class='ptDiv'>
+        <view class='info_li'>
+
+          <block wx:if='{{plis.IsStoreBusiness}}'>
+            <navigator url="../../../pages/shop_list/shop_page/shop_pege?id={{plis.Id}}" hover-class="navigator-hover">
+              <view class='info_li_img'>
+                <image src='{{plis.UnitImg}}' class='info_li_imga' background-size="cover" mode='mode="scaleToFill'></image>
+
+              </view>
+            </navigator>
+
+          </block>
+          <block wx:else>
+
+            <view class='info_li_img'>
+              <image src='{{plis.UnitImg}}' class='info_li_imga' background-size="cover" mode='mode="scaleToFill'></image>
+              <view class='ptDa'>
+                <text>已打烊</text>
+              </view>
+            </view>
+
+
+          </block>
+
+
+          <view class='info_li_text'>
+            <text class='info_li_a'>{{plis.Title}}</text>
+            <text class='info_li_b'>{{plis.Unit}}</text>
+            <view class='info_li_c'>￥{{plis.Price}}
+              <text>/{{plis.Unit}}</text>
+              <text>{{plis.OldPrice}}</text>
+              <view class='info_li_dw'>
+                X
+                <text>{{plis.Num}}</text>
+              </view>
+            </view>
+          </view>
+          
+        </view>
+        <view hidden='{{!plis.IsRestaurant}}' class='ptTXT'>批发折扣{{plis.Discount}}%,优惠金额：{{plis.DiscountMoney}}</view>
+        </view>
+      </block>
+
+    </view>
+  </template>
+  <!--循环输出开始-->
+  <block wx:for="{{Productlist}}" wx:for-item="lis" wx:key="key">
+    <template is="info_li" data="{{...lis}}" />
+  </block>
+
+
+
+</view>

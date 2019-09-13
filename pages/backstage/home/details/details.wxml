@@ -1,0 +1,80 @@
+<!--shop_order.wxml-->
+<view class='header'>
+
+<block wx:for="{{Detail}}" wx:for-item="lis" wx:key="lis">
+  <view class='goods_li'>
+      <view class='li_con'>
+          <view class='con_bottom'>
+           
+            <view class='ptDiv'>
+            <text>{{lis.ProductName}}</text>
+            <view class='ptTxt'>
+              <text>{{lis.UnitName}}</text>
+              <text>x{{lis.Num}}</text>
+              <text class='red'>￥{{lis.Price}}</text>
+            </view>
+            </view>
+          </view>
+
+      </view>
+      <view class='bodercss'></view>
+  </view>
+</block>
+
+  <!--支付方式-->
+  <view class='ps'>
+    <view class='ps_center'>
+      <view class='ps_three'>
+       <view class='ps_three_a'>
+          <text class='ps_t_aa'>订单状态</text>
+          <text class='ps_t_ab' class='ptColor'>{{State}}</text>
+        </view>
+        
+        <view class='ps_three_a'>
+          <text class='ps_t_aa'>配送方式</text>
+          <block wx:if="{{DeliveryType==0}}">
+            <text class='ps_t_ab'>未选择</text>
+          </block>
+          <block wx:elif="{{DeliveryType==1}}">
+            <text class='ps_t_ab'>立即配送</text>
+          </block>
+          <block wx:elif="{{DeliveryType==2}}">
+            <text class='ps_t_ab'>预约配送</text>
+          </block>
+          <block wx:elif="{{DeliveryType==3}}">
+            <text class='ps_t_ab'>线下自提(定点)</text>
+          </block>
+          <block wx:elif="{{DeliveryType==4}}">
+            <text class='ps_t_ab'>线下自提(商户)</text>
+          </block>
+
+        </view>
+
+        <view class='ps_three_a' hidden='{{DeliveryType<2}}'>
+          <block wx:if="{{DeliveryType==2}}">
+            <text class='ps_t_aa'>预约时间</text>
+          </block>
+          <block wx:else>
+            <text class='ps_t_aa'>自提时间</text>
+          </block>
+
+          <text class='ps_t_ab'>{{UserDeliveryTime}}</text>
+        </view>
+      
+        <view class='ps_three_a'>
+          <text class='ps_t_aa'>商品金额</text>
+          <text class='ps_t_ab'>￥{{TotalMoney}}</text>
+        </view>
+        <view class='ps_three_a'>
+          <text class='ps_t_aa'>实付金额</text>
+          <text class='ps_t_ab'>￥{{TotalMoney}}</text>
+        </view>
+      
+      </view>
+    </view>
+  </view>
+
+
+
+
+</view>

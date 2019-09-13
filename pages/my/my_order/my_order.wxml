@@ -1,0 +1,436 @@
+<!--index.wxml-->
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待付款</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">待发货</view>
+    <view class="swiper-tab-list {{currentTab==3? 'on' : ''}}" data-current="3" bindtap="swichNav">配送中</view>
+    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已完成</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+    <!-- 全部 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="lower">
+        <template name="order_ult">
+          <view class="ul">
+            <view class='li'>
+              <navigator url="../../my/my_details/my_details?id={{Id}}&orderNo={{TotleNumber}}">
+                <view class='li_one'>
+                  <block wx:if="{{Status==6}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>待审核</text>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==7}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>处理中</text>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==8}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>退换货完成</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>{{State}}</text>
+                    </view>
+                  </block>
+                </view>
+
+                <view class='li_b' wx:for="{{Detail}}" wx:for-index="idx" wx:for-item="lit" wx:key="lit">
+                  <view class='li_b_a'>
+                    <image src='{{lit.Picture}}' class='li_b_img' background-size='cover' mode="scaleToFill"></image>
+                  </view>
+                  <view class='li_b_b'>
+                    <view class='li_b_aa'>{{lit.ProductName}}
+                      <text>￥{{lit.Price}}</text>
+                    </view>
+                    <view class='li_b_bb'>/{{lit.UnitName}}</view>
+                    <view class='li_b_bb'>X{{lit.Num}}</view>
+                  </view>
+                </view>
+              </navigator>
+              <view class='li_c'>
+                <view class='li_ca'>
+                  <block wx:if="{{Status==1}}">
+                    <view class='li_cb'>
+                      <view bindtap="cancel" data-cancelid="{{TotleNumber}}">取消订单</view>
+                      <view bindtap="GoPay" data-payid="{{Id}}">继续支付</view>
+                    </view>
+                  </block>
+                  <block wx:if="{{Status==-5}}">
+                    <view class='li_cb'>
+                      <view bindtap="cancel" data-cancelid="{{TotleNumber}}">取消订单</view>
+
+                      <view bindtap="GoPay" data-payid="{{Id}}">继续支付</view>
+
+                    </view>
+                  </block>
+
+                  <block wx:elif="{{Status==2}}">
+                    <view class='li_cb'>
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==8}}">
+                    <view class='li_cb'>
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==3}}">
+                    <view class='li_cb'>
+
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==4}}">
+                    <view class='li_cb' bindtap="a">
+                      <view class='li_cba' bindtap="goods" data-goodsid="{{TotleNumber}}">确认收货</view>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==5}}">
+                    <view class='li_cb'>
+
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                      <block wx:if="{{IsComment}}">
+                        <view bindtap="pingOrder" data-delid="{{Id}}" data-sid='{{SupplierId}}'>评价</view>
+                      </block>
+
+                      <block wx:if="{{Status==5}}">
+                        <block wx:if="{{IsOverdays}}">
+                        </block>
+                        <block wx:else>
+                          <view bindtap="backgoods" data-backid="{{Id}}">退换货</view>
+                        </block>
+                      </block>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+
+
+
+        </template>
+        <!--循环输出开始-->
+        <block wx:for="{{order_ult}}" wx:for-item="lis" wx:key="lis">
+          <template is="order_ult" data="{{...lis}}" />
+        </block>
+
+
+        <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+        <view class='null' hidden='{{isNull}}'>
+          <image src="/images/OrderNoll.png"></image>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 待付款 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="lower">
+        <template name="order_ul">
+          <view class="ul">
+            <view class='li'>
+              <navigator url="../../my/my_details/my_details?id={{Id}}&orderNo={{TotleNumber}}">
+                <view class='li_one'>
+                  <view class='li_a'>
+                    <text class='fl'>
+                      <text>订单编号：</text>
+                    <text>{{OrderNo}}</text>
+                    </text>
+                    <text class='li_text'>待付款</text>
+                  </view>
+                </view>
+
+                <view class='li_b' wx:for="{{Detail}}" wx:for-index="idx" wx:for-item="li" wx:key="li">
+                  <view class='li_b_a'>
+                    <image src='{{li.Picture}}' class='li_b_img' background-size='cover' mode="scaleToFill"></image>
+                  </view>
+                  <view class='li_b_b'>
+                    <view class='li_b_aa'>{{li.ProductName}}
+                      <text>￥{{li.Price}}</text>
+                    </view>
+                    <view class='li_b_bb'>/{{li.UnitName}}X{{li.Num}}</view>
+                  </view>
+                </view>
+              </navigator>
+              <view class='li_c'>
+                <view class='li_ca'>
+                  <view class='li_cb'>
+                    <view bindtap="cancel" data-cancelid="{{TotleNumber}}">取消订单</view>
+                    <view bindtap="GoPay" data-payid="{{Id}}">继续支付</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </template>
+        <!--循环输出开始-->
+        <block wx:for="{{order_ul}}" wx:for-item="lis" wx:key="lis">
+          <template is="order_ul" data="{{...lis}}" />
+        </block>
+        <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+        <view class='null' hidden='{{isNull}}'>
+          <image src="/images/OrderNoll.png"></image>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 待发货 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="lower">
+
+        <template name="order_ula">
+          <view class="ul">
+            <view class='li'>
+              <navigator url="../../my/my_details/my_details?id={{Id}}&orderNo={{OrderNo}}">
+                <view class='li_one'>
+                  <view class='li_a'>
+                    <text class='fl'>
+                      <text>订单编号：</text>
+                    <text>{{OrderNo}}</text>
+                    </text>
+                    <text class='li_text'>待发货</text>
+                  </view>
+                </view>
+                <view class='li_b' wx:for="{{Detail}}" wx:for-index="idx" wx:for-item="lia" wx:key="lia">
+                  <view class='li_b_a'>
+                    <image src='{{lia.Picture}}' class='li_b_img' background-size='cover' mode="scaleToFill"></image>
+                  </view>
+                  <view class='li_b_b'>
+                    <view class='li_b_aa'>{{lia.ProductName}}
+                      <text>￥{{lia.Price}}</text>
+                    </view>
+                    <view class='li_b_bb'>/{{lia.UnitName}}X{{lia.Num}}</view>
+                  </view>
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </template>
+        <!--循环输出开始-->
+        <block wx:for="{{order_ula}}" wx:for-item="lis" wx:key="lis">
+          <template is="order_ula" data="{{...lis}}" />
+        </block>
+        <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+        <view class='null' hidden='{{isNull}}'>
+          <image src="/images/OrderNoll.png"></image>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 配送中 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="lower">
+        <template name="order_ulb">
+          <view class="ul">
+            <view class='li'>
+              <navigator url="../../my/my_details/my_details?id={{Id}}&orderNo={{OrderNo}}">
+                <view class='li_one'>
+                  <view class='li_a'>
+                    <text class='fl'>
+                      <text>订单编号：</text>
+                    <text>{{OrderNo}}</text>
+                    </text>
+                    <text class='li_text'>配送中</text>
+                  </view>
+                </view>
+                <view class='li_b' wx:for="{{Detail}}" wx:for-index="idx" wx:for-item="lib" wx:key="lib">
+                  <view class='li_b_a'>
+                    <image src='{{lib.Picture}}' class='li_b_img' background-size='cover' mode="scaleToFill"></image>
+                  </view>
+                  <view class='li_b_b'>
+                    <view class='li_b_aa'>{{lib.ProductName}}
+                      <text>￥{{lib.Price}}</text>
+                    </view>
+                    <view class='li_b_bb'>/{{lib.UnitName}}X{{lib.Num}}</view>
+                  </view>
+                </view>
+              </navigator>
+              <view class='li_c'>
+                <view class='li_ca'>
+                  <view class='li_cb' bindtap="a">
+                    <view class='li_cba' bindtap="goods" data-goodsid="{{TotleNumber}}">确认收货</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </template>
+        <!--循环输出开始-->
+        <block wx:for="{{order_ulb}}" wx:for-item="lis" wx:key="lis">
+          <template is="order_ulb" data="{{...lis}}" />
+        </block>
+        <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+        <view class='null' hidden='{{isNull}}'>
+          <image src="/images/OrderNoll.png"></image>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 已完成 -->
+    <swiper-item>
+      <scroll-view scroll-y style="height:{{winHeight}}px;" bindscrolltolower="lower">
+        <template name="order_ulc">
+          <view class="ul">
+            <view class='li'>
+              <navigator url="../../my/my_details/my_details?id={{Id}}&orderNo={{OrderNo}}">
+                <view class='li_one'>
+
+                  <block wx:if="{{Status==6}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>待审核</text>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==7}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>处理中</text>
+                    </view>
+                  </block>
+                  <block wx:elif="{{Status==8}}">
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>退换货完成</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class='li_a'>
+                      <text class='fl'>
+                        <text>订单编号：</text>
+                      <text>{{OrderNo}}</text>
+                      </text>
+                      <text class='li_text'>{{State}}</text>
+                    </view>
+                  </block>
+                </view>
+                <view class='li_b' wx:for="{{Detail}}" wx:for-index="idx" wx:for-item="lic" wx:key="lic">
+                  <view class='li_b_a'>
+                    <image src='{{lic.Picture}}' class='li_b_img' background-size='cover' mode="scaleToFill"></image>
+                  </view>
+                  <view class='li_b_b'>
+                    <view class='li_b_aa'>{{lic.ProductName}}
+                      <text>￥{{lic.Price}}</text>
+                    </view>
+                    <view class='li_b_bb'>/{{lic.UnitName}}X{{lic.Num}}</view>
+                  </view>
+                </view>
+              </navigator>
+              <view class='li_c'>
+                <view class='li_ca'>
+                  <view class='li_cb del_O'>
+                    <block wx:if="{{Status==5}}">
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                    </block>
+                    <block wx:elif="{{Status==2}}">
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                    </block>
+                    <block wx:elif="{{Status==8}}">
+                      <view bindtap="del" data-delid="{{TotleNumber}}">删除订单</view>
+                    </block>
+
+                    <block wx:if="{{Status==5}}">
+                      <block wx:if="{{IsComment}}">
+                        <view bindtap="pingOrder" data-delid="{{TotleNumber}}" data-sid='{{SupplierId}}'>评价</view>
+                      </block>
+                      <block wx:if="{{IsOverdays}}">
+                      </block>
+                      <block wx:else>
+                        <view bindtap="backgoods" data-backid="{{TotleNumber}}" data-oid='{{Id}}'>退换货</view>
+                      </block>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </template>
+        <!--循环输出开始-->
+        <block wx:for="{{order_ulc}}" wx:for-item="lis" wx:key="lis">
+          <template is="order_ulc" data="{{...lis}}" />
+        </block>
+        <view hidden='{{searchLoading}}' class="loading complete"> 正在载入更多...</view>
+        <view hidden='{{searchLoadingComplete}}' class="loading complete">没有了呀，快放手</view>
+        <view class='null' hidden='{{isNull}}'>
+          <image src="/images/OrderNoll.png"></image>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+
+  <!--退货-->
+  <view class="b1" hidden="{{flag}}">
+    <view class='tc'>
+      <view class='tc_pt'>
+        <view class='tc_a'>{{tc_a}}</view>
+        <view class='xa' bindtap='b'>
+          <image src='/images/sp_aa.png' class='x' background-size='cover' mode="scaleToFill"></image>
+        </view>
+      </view>
+      <view class='tc_b'>
+        <text class='tc_ba'>{{tc_b}}</text>
+        <view class='tc_bb'>
+          <view wx:for="{{order_back}}" wx:for-index="idx" wx:for-item="bak" wx:key="bak">
+            <block wx:if="{{_num==idx}}">
+
+              <view class=" bb_li list-menu list-menu1 cur" bindtap="menuClick" data-id="{{idx}}">{{bak.Reason}}</view>
+            </block>
+            <block wx:else>
+              <view class=" bb_li list-menu list-menu1" bindtap="menuClick" data-id="{{idx}}">{{bak.Reason}}</view>
+            </block>
+          </view>
+        </view>
+        <view class='table'>
+          <view class="weui-cell__hd">
+            <view class="weui-label">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="name" value="{{ form.name }}" bindblur="changetel" class="weui-input" type="text" placeholder=" " />
+          </view>
+        </view>
+
+        <view class='button'>
+          <button class="weui-btn" type="primary" bindtap="backSub">确认提交</button>
+        </view>
+        <text class='text_pt'>提示：生鲜、水果等一经出售概不退换</text>
+      </view>
+    </view>
+  </view>
+
+
+</view>

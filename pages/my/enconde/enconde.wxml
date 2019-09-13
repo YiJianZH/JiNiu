@@ -1,0 +1,97 @@
+<!--pages/my/my.wxml-->
+<view class='tg'>
+   <view class='tg_one'>
+       <view class='logo'>
+            <image src='' class='logo_img'  background-size='cover' mode="scaleToFill"></image> 
+       </view>
+       <view class='logo_ewm'>
+            <image src='{{ewm}}' class='ewm'  background-size='cover' mode="scaleToFill"></image> 
+            <text class='logo_ewm_a'>{{title}}</text>
+       </view>
+        <view class='logo_ewm' style="height:80rpx">            
+            <text bindtap="GoIndex" class='logo_ewm_a' style="color:blue">去商城逛逛</text>
+       </view>
+       <view class='tg_two'></view>
+   </view>
+</view>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

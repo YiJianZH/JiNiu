@@ -1,0 +1,140 @@
+<!--pages/backstage/home/storeOperation/activityMan/addManjian/addmj.wxml-->
+
+<view class='addmj'>
+  <view class='lists pb150'>
+
+    <view class='lists_con'>
+      <label>优惠券名称</label>
+      <view class='con_input'>
+        <input type='text' placeholder='输入优惠券名称' bindinput='setName'></input>
+      </view>
+    </view>
+
+    <view class='lists_con ttb'>
+      <label class='color_999'>优惠券有效时间段</label>
+      <view class='con_input'>
+        <view class='top_bar'>
+          <view class='w'>
+            <text>开始时间</text>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{startDate}}" start="2015-09-01"  bindchange="bindStartDate">
+                <view class="picker">{{startDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+          <view class='w'>
+            <text>结束时间</text>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{endDate}}" start="{{startDate}}"  bindchange="bindEndDate">
+                <view class="picker">{{endDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con ttb'>
+      <label class='color_999'>优惠券金额</label>
+      <view class='con_input'>
+        <view class='w'>
+          <text>满</text>
+          <view class='input_wrap'>
+            <input type='digit' placeholder='输入金额' bindinput='setFullPrice'></input>
+          </view>
+        </view>
+        <view class='w'>
+          <text>减</text>
+          <view class='input_wrap'>
+            <input type='digit' placeholder='输入金额' bindinput='setPrice'  ></input>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con ttb noLabel'>
+      <label class='color_999'>发布数量</label>
+      <view class='con_input'>
+        <view class='w'>
+          <view class='input_wrap'>
+            <input type='number' placeholder='输入数量' bindinput='setNum'></input>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con ttb noLabel'>
+      <label class='color_999'>领取数量限制</label>
+      <view class='con_input'>
+        <view class='w'>
+          <view class='input_wrap'>
+            <input type='number' placeholder='输入数量限制' bindinput='setFullNum'></input>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con ttb noLabel textarea'>
+      <label class='color_999'>优惠说明</label>
+      <view class='con_input'>
+        <view class='w'>
+          <view class='input_wrap'>
+            <textarea type='text' placeholder='输入优惠说明' bindinput='setExplanation'></textarea>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con for_switch'>
+      <label>是否发布</label>
+      <view class="body-view">
+        <switch checked bindchange="switch1Change" checked='{{IsPublish}}' />
+      </view>
+    </view>
+
+    <view class='lists_con ttb sb'>
+      <label>优惠方式</label>
+      <view class='con_input'>
+        <view class='btn_wrap {{CouponType==1?"isSelected":""}}' bindtap='to_chooseGoods' data-tid='1'>
+          <text>全店优惠</text>
+        </view>
+        <view class='btn_wrap {{CouponType==4?"isSelected":""}}' bindtap='to_chooseGoods' data-tid='4'>
+          <text>指定商品</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='lists_con ttb' hidden='{{CouponType==1}}'>
+      <label class='color_f90'>已选商品</label>
+      <block wx:for="{{CouponPordt}}" wx:for-item="item" wx:key="key">
+
+      
+      <view class='con_input'>
+        <view class='con_wrap'>
+          <view class='left_wrap'>
+            <image class='good_img' src='{{item.Picture}}'></image>
+            <view class='mid_wrap'>
+              <text class='good_size'>{{item.Title}}{{item.Unit}}</text>
+              <text class='color_red'>￥{{item.Price}}</text>
+              <text class='color_666'>进价:￥{{item.InPrice}}</text>
+            </view>
+          </view>
+          <view class='right_wrap stock'>
+            <text>库存：{{item.Inventory}}</text>
+            <text>安全库存：{{item.SafeStock}}</text>
+          </view>
+        </view>
+        <view class='con_wrap' bindtap='delectPid' data-pid='{{item.Id}}'>
+          <image class='icon_del' src='/images/icon_del.png'></image>
+        </view>
+      </view>
+      </block>
+
+    </view>
+    
+  </view>
+
+  <button bindtap='OnlickSave'>保存</button>
+</view>

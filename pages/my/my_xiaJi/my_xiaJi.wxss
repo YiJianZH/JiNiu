@@ -1,0 +1,330 @@
+/* pages/my/my.wxss */
+page{
+  width: 100%;
+   height: 100%;
+   background-color: #f5f5f5;
+   font-family: "微软雅黑";
+   overflow: hidden;
+}
+
+.yjDivA{
+  overflow:hidden;
+  background-color: #fff;
+  padding-top: 30rpx;}
+
+.yjDivA text{
+  font-size: 30rpx;
+  color: #333;
+  width:50%;
+  float: left;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.yjDivA view{
+  margin-left: 2%;
+}
+
+
+.homeOneLi{
+  overflow: hidden;
+  display: flex;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+
+.yjTop{
+  width: 50%;
+}
+.homeOneLi text{
+  display: block;
+  width: auto;
+  margin-right: 0.5em;
+  height: auto;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #999999;
+  line-height: 1.4rem;
+}
+
+.homeOneLi input{
+  width: 70% ;
+  height: auto;
+  overflow: hidden;
+  text-indent: 1em;
+  font-size: 30rpx;
+  color: #31457f; 
+  font-weight: 400;
+}
+
+.yj{
+  height: 100%;
+}
+
+.cen{
+  overflow: hidden;
+  display: flex;
+  height: calc( 100% - 94rpx );
+  width: 100%;
+}
+
+.left{
+  width: 40%;
+  height: 100%;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.leftUl{ 
+  overflow: hidden;
+}
+
+.leftLi{
+  overflow: hidden;
+   border-left: solid transparent 2px;
+}
+
+.leftLi text{
+  font-size: 28rpx;
+  color: #333;
+  padding-bottom:20rpx;
+  padding-top: 20rpx;
+  border-left:solid transparent 2px;
+
+}
+
+.leftLiActive{
+ border-left: solid #47b34e 2px;
+}
+
+.leftLi > view{
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 30rpx;
+  color: #666;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+
+ .leftLi > view text{
+     font-size: 30rpx;
+  color: #666;
+  display: block;
+ }
+
+  .leftLi > view text:last-child{
+     font-size:20rpx;
+  color: #999;
+  margin-top: 5px;
+ }
+
+ .leftLiActive > view{
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 30rpx;
+  color: #47b34e;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+ }
+
+ .leftLiActive > view text{
+     font-size: 30rpx;
+  color: #47b34e;
+  display: block;
+    
+ }
+
+   .leftLiActive > view text:last-child{
+     font-size:20rpx;
+  color: #999;
+  margin-top: 5px;
+ }
+
+.yj_mx{
+  width: 95%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+}
+
+.yjDiv{
+  background-color: #fff;
+  border-bottom: solid 4px #f5f5f5;
+}
+
+.homeLiDiv{
+  width:200rpx;
+  border: solid 1px #e6e6e6;
+  height:auto;
+  overflow:hidden;
+  display: flex;
+  border-radius: 6rpx;
+}
+
+.homeLiDiv view{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.4rem;
+  text-indent: 0.5em;
+}
+
+.homeLiDiv view text{
+  display: inline;
+  font-size: 28rpx;
+  color: #333;
+  margin-right: 0.25em;
+}
+
+.homeLiDiv view picker{
+  display: inline;
+}
+
+.homeCity picker{
+  width:70%;
+  height:auto;
+  overflow:hidden;
+  text-indent:1em;
+  font-size:30rpx;
+  color:#31457f;
+  font-weight:400;
+  line-height: 1.4rem;
+}
+
+.yj_ul{
+  width: 100%;
+  height: 88%;
+  overflow: auto;
+}
+
+.yj_ul::-webkit-scrollbar{
+  width: 0px;
+  height: 0px;
+  color: transparent;
+}
+
+.li{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin:30rpx auto 0 auto;
+  background-color: #fff;
+}
+
+.li:first-child{
+  margin-top: 0px;
+}
+
+.liTop{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  padding-bottom: 20rpx;
+  padding-top:20rpx;
+}
+
+.li:last-child{
+  border-bottom: none;
+}
+.li_a{
+  width: 100%;
+  font-size:28rpx;
+  color: #333;
+  height: auto;
+  line-height: 40rpx;
+  padding-bottom:10rpx;
+
+}
+
+.li_c{
+  border-top: solid 1px #e6e6e6;
+  padding-top: 20rpx;
+}
+
+.li_ab{
+  color: #999;
+  padding: 5px;
+}
+
+.li_a text{
+float:right;
+display:inline-block;
+
+}
+text.li_b{
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 44rpx;
+}
+
+.liTxt{
+  color: #47b34e;
+}
+.nodata{
+  text-align:center;
+font-size:12px;
+color:#a1a1a1;
+margin-top:20px;
+margin-bottom: 20px;
+
+}
+
+
+
+.ptColor{
+  overflow: hidden;
+  height: 100%;
+}
+
+.ptColor .leftLiActive{
+ border-left: solid #0066ff 2px;
+}
+
+.ptColor .leftLiActive > view{
+  color: #0066ff;}
+
+.ptColor .leftLiActive > view text{
+  color: #0066ff;}
+  
+.ptColor .liTxt{
+  color: #0066ff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+/* pages/backstage/home/storeOperation/accountChecking/innerPage/ip.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.ip {
+  font-size: 28rpx;
+}
+.each_list {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+}
+.color_666 {
+  color: #666;
+}
+.color_f90 {
+  color: #f90;
+}
+.fz40 {
+  font-size: 40rpx;
+}

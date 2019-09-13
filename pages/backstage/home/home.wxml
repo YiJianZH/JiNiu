@@ -1,0 +1,250 @@
+<movable-area>
+
+  <!-- 顶部搜索框 -->
+  <view class='top_search'>
+    <image class='icon_search' src='/images/icon_search.png'></image>
+    <input placeholder='搜索商品' bindinput='setNameText' bindconfirm='onclikSelect'></input>
+  </view>
+
+  <view class='tabTop'>
+    <view class="{{_num == 1?'addCitying':'addCity'}}" data-num="1" bindtap="clickNum">个人</view>
+    <view class="{{_num == 2?'addCitying':'addCity'}}" data-num="2" bindtap="clickNum">企业</view>
+  </view>
+
+  <view class="container">
+    <!--左侧栏-->
+    <view id="nav_left">
+      <scroll-view scroll-y='true' class='MenList'>
+        <view class='left_lists'>
+
+          <view class="nav_left_items {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchRightNav">全部</view>
+          <view class="nav_left_items {{currentTab==-1 ? 'active' : ''}}" data-current="-1" bindtap="switchRightNav">未上架产品</view>
+          <block wx:for="{{TypeList}}" wx:key="key" wx:for-item="list">
+            <view class="nav_left_items {{currentTab==list.Id ? 'active' : ''}}" data-current="{{list.Id}}" bindtap="switchRightNav">{{list.Name}}</view>
+            <view id='wrap' class="{{currentTab==list.Id ? 'show' : 'hide'}}">
+              <view class='box'>
+                <block wx:for="{{list.ChildCategory}}" wx:key="key" wx:for-item="chil">
+                  <view class='second_lists' bindtap='toggle_third' data-cid='{{chil.Id}}'>{{chil.Name}}</view>
+                </block>
+              </view>
+            </view>
+
+          </block>
+
+        </view>
+      </scroll-view>
+    </view>
+    <!--右侧栏-->
+    <view id='nav_right'>
+
+      
+      <scroll-view scroll-y='true' class='MenList' scroll-y="true" bindscrolltolower="lower" scroll-into-view="{{toView}}">
+        <view class='box'>
+
+          <view class='top_bar'>
+                <text class='goods_count'>共有约{{productNuber}}个商品</text>
+                <view class='right_wrap'>
+                  <!-- <view class='btn newGoods' bindtap='to_newGoods'>新建商品</view> -->
+                  <view class='btn goods_man' bindtap='to_goods_man'>批量管理</view>
+                </view>
+              </view>
+
+          <block wx:for="{{ProductList}}" wx:key="key" wx:for-item="plist" wx:for-index="pidx">
+            <view class="right_lists" id='pit{{plist.Id}}'>
+
+              
+
+              <text class='fromLeftBar'>{{plist.Name}}</text>
+              <block wx:for="{{plist.ProductList}}" wx:key="key" wx:for-item="itelist" wx:for-index="tidx">
+                <view class='lists_con'>
+                  <view class='con_top'>
+                    <block wx:if="{{itelist.IsRestaurant}}">
+                      <view class='txtPt'>企业</view>
+                    </block>
+                    <block wx:else>
+                      <view class='txtPt txtPtA'>个人</view>
+                    </block>
+
+                    <view class='left_wrap'>
+                      <block wx:if="{{itelist.IsPublish}}">
+                        <view class='isNowSale'>已上架</view>
+                      </block>
+                      <block wx:else>
+                        <view class='isNotNowSale'>未上架</view>
+                      </block>
+                      <image class='good_img' src='{{itelist.Picture}}'></image>
+                      <view class='mid_wrap'>
+                        <text class='good_size'>{{itelist.Title}}{{itelist.Unit}}</text>
+                        <text class='good_price'>￥{{itelist.Price}}</text>
+                        <text class='good_priceb'>进价:￥{{itelist.InPrice}}</text>
+                      </view>
+                    </view>
+                    <view class='right_wrap stock'>
+                      <text>库存：{{itelist.Inventory}}</text>
+                      <text>安全库存：{{itelist.SafeStock}}</text>
+                    </view>
+                  </view>
+                  <view class='con_bottom'>
+
+                    <block wx:if="{{itelist.IsPublish}}">
+                      <view class='setting_btn' bindtap='setting_btna' data-pidx='{{pidx}}' data-tidx='{{tidx}}'>设置库存/价格</view>
+                      <view class='setting_btn' bindtap='setlow_btna' data-pid='{{itelist.Id}}'>立即下架</view>
+                    </block>
+                    <block wx:else>
+                      <view class='setting_btn' bindtap='setUpper_btna' data-pid='{{itelist.Id}}'>立即上架</view>
+                      <view class='setting_btn' bindtap='setDeletUnit' data-uid='{{itelist.UnitId}}'>删除</view>
+                    </block>
+
+                  </view>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 设置库存/价格弹窗 -->
+    <view class='pop' hidden='{{pop_sh}}'>
+      <view class='setting_btn_pop'>
+        <view class='con_top'>
+          <view class='left_wrap'>
+            <image class='good_img' src='{{TProud.Picture}}'></image>
+            <view class='mid_wrap'>
+              <text class='good_size'>{{TProud.Title}}{{TProud.Unit}}</text>
+              <text class='good_price'>￥{{TProud.Price}}</text>
+              <text class='good_priceb'>进价:￥{{TProud.InPrice}}</text>
+            </view>
+          </view>
+          <view class='right_wrap stock'>
+            <text>库存：{{TProud.Inventory}}</text>
+            <text>安全库存：{{TProud.SafeStock}}</text>
+          </view>
+        </view>
+
+        <view class='con_bottom'>
+          <view class='w'>
+            <label>价格</label>
+            <view class='input_wrap'>
+              <input type='digit' placeholder='输入价格' bindinput='setUpdatePrice' value='{{UpdateProud.Price}}'></input>
+            </view>
+          </view>
+          <view class='w'>
+            <label>进价</label>
+            <view class='input_wrap'>
+              <input type='digit' placeholder='输入进价' bindinput='setUpdateInPrice' value='{{UpdateProud.InPrice}}'></input>
+            </view>
+          </view>
+          <view class='w'>
+            <label>库存</label>
+            <view class='input_wrap'>
+              <input type='number' placeholder='输入库存' bindinput='setUpdateInventory' value='{{UpdateProud.Inventory}}'></input>
+            </view>
+          </view>
+          <view class='w'>
+            <label>安全库存</label>
+            <view class='input_wrap'>
+              <input type='number' placeholder='输入安全库存' bindinput='setUpdateSafeStock' value='{{UpdateProud.SafeStock}}'></input>
+            </view>
+          </view>
+          <view class='w'>
+            <label>产品规格</label>
+            <view class='input_wrap'>
+             <input type='text' placeholder='输入产品规格' value='{{UpdateProud.Unit}}' bindinput='setUpdateUnit'></input>
+              <!-- <switch checked="{{UpdateProud.IsRestaurant}}" bindchange="switchRestaurant" /> -->
+            </view>
+          </view>
+        </view>
+
+
+        <button bindtap='OnlickUpdate'>确定</button>
+
+        <view class='cancel_btn' bindtap='pop_hide'>
+          <image src='/images/sp_gga.png'></image>
+        </view>
+      </view>
+    </view>
+
+
+
+    <view class='tabBar'>
+      <view class='lists'>
+        <view class='con_info'>
+          <view class='w' bindtap='ptDing'>
+            <image src='/images/pt_icon.png'></image>
+            <text>订单</text>
+          </view>
+          <view class='w' bindtap='to_home'>
+            <image src='/images/icon_shangpina.png'></image>
+            <text class='color_f90'>商品管理</text>
+          </view>
+          <view class='w' bindtap='to_so'>
+            <image src='/images/icon_mendian.png'></image>
+            <text>门店运营</text>
+          </view>
+          <view class='w' bindtap='to_setting'>
+            <image src='/images/icon_shezhi.png'></image>
+            <text>设置</text>
+          </view>
+          <view class='w' bindtap='to_client'>
+            <image src='/images/icon_home.png'></image>
+            <text>回到商城</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 购物车 -->
+    <movable-view x="{{x}}" y="{{y}}" direction="all">
+      <view class='cart' bindtap='to_newGoods'>
+        <button>购物车</button>
+        <text>新建</text>
+      </view>
+    </movable-view>
+
+
+  </view>
+
+  <!-- 弹窗-批量上架 -->
+  <view class='batchAdd_pop' hidden='{{batchPopSH}}'>
+    <view class='pop_con' bindtap='cancelBatchAdd'>
+      <text>批量上架</text>
+    </view>
+  </view>
+
+
+  <!-- 弹窗 -->
+  <view class='ptPop' hidden='{{homeTrue}}'>
+    <view class='ptBai'>
+      <view class='ptCen'>
+        <block wx:for="{{PFlist}}" wx:for-item="ptLi" wx:key='key' wx:for-index="idx">
+          <view class='ptLi'>
+
+            <view class='ptDiv'>
+              <text>数量</text>
+              <view class='ptTxt'>
+                <input type='text' bindinput="setNuber" data-idx='{{idx}}' value='{{ptLi.Nuber}}'></input>
+              </view>
+            </view>
+
+            <view class='ptDiv'>
+              <text>折扣</text>
+              <view class='ptTxt'>
+                <input type='text' bindinput="setDiscount" data-idx='{{idx}}' value='{{ptLi.Discount}}'></input>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class='ptLiImg' bindtap='AddPFist'>
+        <image src='/images/icon_addbig.png'></image>
+      </view>
+      <view class='ptBtn'>
+        <button type='button' bindtap='popHide'>取消</button>
+        <button type='button' bindtap='PostPFist'>确定</button>
+      </view>
+    </view>
+  </view>
+
+</movable-area>

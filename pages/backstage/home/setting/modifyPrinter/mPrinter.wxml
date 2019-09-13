@@ -1,0 +1,43 @@
+
+<view class='mPrinter'>
+  <view class='lists'>
+
+    <view class='each_list'>
+      <label>打印机名称</label>
+      <view class='w'>
+        <input type='text' placeholder='输入打印机名称' value='{{printName}}' bindinput='setPrintName'></input>
+      </view>
+    </view>
+    
+    <view class='each_list'>
+      <label>设置打印份数</label>
+      <view class='w'>
+        <input type='number' placeholder='输入份数' value='{{printNum}}' bindinput='setPrintNum'></input>
+      </view>
+    </view>
+
+    <view class='each_list'>
+      <label>打印机码</label>
+      <view class='w'>
+        <input type='number' placeholder='输入打印机码' value='{{printNumber}}'  bindinput='setPrintNumber'></input>
+      </view>
+    </view>
+    
+    <view class='each_list'>
+      <label>打印机key</label>
+      <view class='w'>
+        <input type='number' placeholder='输入打印机key' value='{{printKey}}' bindinput='setPrintKey'></input>
+      </view>
+    </view>
+    
+    <view class='each_list ttb'>
+      <label>备注</label>
+      <view class='w'>
+        <textarea type='text' placeholder='在此输入备注~' value='{{printRemark}}' bindinput='setPrintRemark'></textarea>
+      </view>
+    </view>
+
+  <button bindtap='setOnlickSave'>确定</button>
+
+  </view>
+</view>

@@ -1,0 +1,68 @@
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+ <view class='one'>
+      <form bindsubmit="formSubmit1">
+        <view class='oneLi'>
+          <view class='liCen'>
+            <text>企业名称</text>
+            <view class='liIn'>
+              <input type='text' bindinput="setEnterpriseName" disabled='{{Status==2}}' value='{{EnterpriseName}}'  placeholder='输入企业名称'></input>
+            </view>
+          </view>
+        </view>
+        <view class='oneLi'>
+          <view class='liCen'>
+            <text>企业地址</text>
+            <view class='liIn'>
+               <textarea placeholder='请输入地址' bindinput="setEnterpriseAddr" disabled='{{Status==2}}' value='{{EnterpriseAddr}}' auto-height='true'></textarea>
+            </view>
+            
+          </view>
+        </view>
+        <view class='oneLi' hidden='{{Status==2}}'>
+          <view class='liCen liCenPt' >
+            <text>营业执照</text>
+            <view class='liIn liInA' data-did='1'  bindtap='getUpdateImage'>
+              <image src='{{License}}'></image>
+            </view>
+          </view>
+        </view>
+        <view class='oneLi' hidden='{{Status==2}}'>
+          <view class='liCen liCenPt' >
+            <text>门头照</text>
+            <view class='liIn liInA' data-did='2' bindtap='getUpdateImage'>
+              <image src='{{DoorPhoto}}'></image>
+            </view>
+          </view>
+        </view>
+
+        <view class='oneLi'>
+          <view class='liCen'>
+            <text>联系人</text>
+            <view class='liIn'>
+              <input type='text' bindinput="setContacts" disabled='{{Status==2}}'  value='{{Contacts}}' placeholder='输入联系人'></input>
+            </view>
+          </view>
+        </view>
+        <view class='oneLi'>
+          <view class='liCen'>
+            <text>联系电话</text>
+            <view class='liIn'>
+              <input type='number' bindinput="setTelephone" disabled='{{Status==2}}' value='{{Telephone}}'  placeholder='输入联系电话'></input>
+            </view>
+          </view>
+        </view>
+        <view class='oneLi oneLiB' hidden='{{Status==2}}'>
+          <view class='liCen'>
+            <text>手机验证码</text>
+            <view class='liIn'>
+              <input type='number' bindinput="setCode" value='{{Code}}' placeholder='输入验证码'></input>
+            </view>
+          </view>
+          <button type='button' bindtap='getCode'>{{msgText}}</button>
+        </view>
+
+        <button form-type='submit' class='liBtn' hidden='{{Status==2}}' >提交</button>
+      </form>
+    </view>
+    </view>

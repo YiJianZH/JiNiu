@@ -1,0 +1,61 @@
+
+<view class='list'>
+   <view class='listAdd' bindtap='Adddate'>添加</view>
+    <view class='clear'></view>
+</view>
+   <view class='ul'>
+      <view class='li'>类型</view>
+      <view class='li'>折扣条件</view>
+      <view class='li'>折扣</view>
+      <view class='li'>操作</view>
+   </view>
+
+
+<view class='ulList'>
+<block wx:for='{{ listLi }}' wx:for-item='listLi' wx:for-index="idx"  wx:key="un">
+   <view class='ulTop'> 
+   <view class='li'>{{listLi.TypeName}}</view>
+       <view class='li'>{{listLi.SatisfyPrice}}￥</view>
+       <view class='li'>{{listLi.Proportion}}%</view>
+       <view class='li'>
+       <text bindtap='showClick' data-idx='{{idx}}'>编辑</text>
+       <text bindtap='delectClick' data-idx='{{idx}}'>删除</text>
+       </view>
+   </view>
+</block>
+   </view>
+
+<view class='listPop' hidden='{{ listTrue }}'>
+    <view class='listBai'>
+       <view class='listCen'>
+
+          <view class='popLi'>
+             <text>折扣类型</text>
+             <view class='popDiv'>
+            <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+         
+            </picker>  -->
+             <input type='text' value='金额满减' disabled='true'></input>
+                <!-- <image src='/images/icon_choose.png'></image> -->
+             </view>
+          </view>
+          <view class='popLi'>
+             <text>折扣条件</text>
+             <view class='popDiv'>
+                <input type='digit' value='请输入条件' bindinput='setSatisfyPrice'  value='{{update.SatisfyPrice}}'></input>
+             </view>
+          </view>
+          <view class='popLi'>
+             <text>折扣比例</text>
+             <view class='popDiv'>
+                <input type='digit' value='请输入比例' bindinput='setProportion' value='{{update.Proportion}}'></input>
+             </view>
+          </view>
+
+       </view>
+       <view class='btn'>
+         <view class='left' bindtap='hideClick'>取消</view>
+         <view class='left' bindtap='SaveData'>确定</view>
+       </view>
+    </view>
+</view>

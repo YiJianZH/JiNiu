@@ -1,0 +1,212 @@
+<!--pages/backstage/home/storeOperation/accountChecking/ac.wxml-->
+
+<view class='ac'>
+  <view class='ac_con'>
+
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+        <view class='statuLi'>订单统计</view>
+      </view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+        <view class='statuLi'>资金明细</view>
+      </view>
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">
+        <view class='statuLi'>资金统计</view>
+      </view>
+    </view>
+
+    <swiper style="height:{{winHeight - 31}}px" current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" bindscroll="getSelectItem">
+
+      <!-- 1 -->
+      <swiper-item>
+        <view class='top_bar'>
+          <view class='w'>
+            <label>开始时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{startDate}}" start="2015-09-01" bindchange="bindStartDate">
+                <view class="picker">{{startDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+          <view class='w'>
+            <label>结束时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDate">
+                <view class="picker">{{endDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='bill_lists'>
+          <block wx:for="{{Statistics}}" wx:key="list" wx:for-index="idx">
+
+
+            <view class='each_list' bindtap='details' data-idx='{{item.Id}}'>
+              <view class='ptView'>
+                <view class='con_top'>
+                  <text>{{item.CreateTime}}</text>
+                  <image src='/images/icon_xiangqing.png'></image>
+                </view>
+                <view class='ptTxt'>订单号：{{item.OrderNo}}</view>
+              </view>
+              <view class='con_bottom'>
+                <view class='detail_a'>
+                  <text>营业额：</text>
+                  <text class='color_f90 fz40'>￥{{item.Turnover}}</text>
+                </view>
+                <view class='detail_b'>
+                  <text>实收：</text>
+                  <text class='color_f90 fz40'>￥{{item.Profit}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+
+          <view class='spacing'></view>
+
+          <view class='each_list total_count'>
+            <view class='acTop'>
+              <view class='con_top'>
+                <text>合计</text>
+                <image src='/images/icon_xiangqing.png'></image>
+              </view>
+              <view class='ptTxt'>订单数：{{Number}}</view>
+            </view>
+            <view class='con_bottom'>
+              <view class='detail_a'>
+                <text>营业额：</text>
+                <text class='color_f90 fz40'>￥{{Turnover}}</text>
+              </view>
+              <view class='detail_b'>
+                <text>实收：</text>
+                <text class='color_f90 fz40'>￥{{Income}}</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+
+
+        <!-- 无数据 -->
+        <!-- <view class='noDate_box'>
+          <image src='/images/icon_noDate.png'></image>
+        </view>       -->
+      </swiper-item>
+
+      <!-- 2 -->
+      <swiper-item>
+        <view class='top_bar'>
+          <view class='w'>
+            <label>开始时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{startDate}}" start="2015-09-01" bindchange="bindStartDate">
+                <view class="picker">{{startDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+          <view class='w'>
+            <label>结束时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDate">
+                <view class="picker">{{endDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='bill_lists'>
+          <block wx:for="{{orderlis}}" wx:key="list" wx:for-index="idx">
+
+
+            <view class='each_list'>
+              <view class='con_top' bindtap='gozjmx' data-idx='{{idx}}'>
+                <text>{{item.CreateTime}}</text>
+                <image src='/images/icon_xiangqing.png'></image>
+              </view>
+              <view class='con_bottom'>
+                <view class='detail_a'>
+                  <text>营业额：</text>
+                  <text class='color_f90 fz40'>￥{{item.Turnover}}</text>
+                </view>
+                <view class='detail_b'>
+                  <text>利润：</text>
+                  <text class='color_f90 fz40'>￥{{item.Profit}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+
+          <view class='spacing'></view>
+
+          <view class='each_list total_count'>
+            <view class='con_top'>
+              <text>合计</text>
+              <image src='/images/icon_xiangqing.png'></image>
+            </view>
+            <view class='con_bottom'>
+              <view class='detail_a'>
+                <text>营业额：</text>
+                <text class='color_f90 fz40'>￥{{turnover}}</text>
+              </view>
+              <view class='detail_b'>
+                <text>利润：</text>
+                <text class='color_f90 fz40'>￥{{profit}}</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </swiper-item>
+
+      <!-- 3 -->
+      <swiper-item>
+        <view class='top_bar'>
+          <view class='w'>
+            <label>开始时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{startDate}}" start="2015-09-01" end="2030-09-01" bindchange="bindStartDate">
+                <view class="picker">{{startDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+          <view class='w'>
+            <label>结束时间</label>
+            <view class='input_wrap'>
+              <picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDate">
+                <view class="picker">{{endDate}}</view>
+                <image src='/images/icon_choose.png'></image>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='bill_lists'>
+
+          <view class='each_list total_count'>
+            <view class='con_top'>
+              <text>合计</text>
+              <image src='/images/icon_xiangqing.png'></image>
+            </view>
+
+            <view class='con_bottom'>
+              <view class='detail_a'>
+                <text>营业额：</text>
+                <text class='color_f90 fz40'>￥{{turnover}}</text>
+              </view>
+              <view class='detail_b'>
+                <text>利润：</text>
+                <text class='color_f90 fz40'>￥{{profit}}</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </swiper-item>
+
+    </swiper>
+
+  </view>
+</view>

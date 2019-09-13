@@ -1,0 +1,95 @@
+<!--pages/my/my.wxml-->
+<view class='tg'>
+   <image src='{{appUserType==2?"/images/bg_lan.png":"/images/bg.png"}}' class='tg_img'  mode="scaleToFill"></image> 
+   <view class='tg_one'>
+       <view class='logo'>
+            <image src='{{logo_img}}' class='logo_img'  background-size='cover' mode="scaleToFill"></image> 
+       </view>
+       <view class='logo_ewm'>
+            <image src='{{ewm}}' class='ewm'  background-size='cover' mode="scaleToFill"></image> 
+            <text class='logo_ewm_a'>{{title}}</text>
+       </view>
+       <view class='tg_two'>{{tg_two}}</view>
+   </view>
+</view>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

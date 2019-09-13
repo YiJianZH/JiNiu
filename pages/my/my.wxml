@@ -1,0 +1,429 @@
+<!--pages/my/my.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <view class='my' hidden='{{magesstye}}'>
+    <view class='my_head'>
+      <image src='{{appUserType==2?"../../images/my_back_lan.png":"../../images/my_back.png"}}' class='my_back' background-size="cover" mode='scaleToFill'></image>
+      <view class='my_head_a'>
+        <view class='my_one'>
+          <!--界面跳转 -->
+          <form bindsubmit='formSubmit' name='scrkMsg' report-submit>
+            <button form-type="submit" class='merchant_entrance' bindtap='to_backstage'>
+              <text>商户入口</text>
+            </button>
+          </form>
+
+          <navigator url="../../pages/my/my_bj/my_bj?id={{id}}" hover-class="navigator-hover">
+            <view class='my_a'>
+              <image src='{{my_a_img}}' class='my_a_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <text>{{bj}}</text>
+            </view>
+          </navigator>
+        </view>
+        <view class='my_b'>
+          <view>{{name}}</view>
+          <view>
+            <view class="userId" style="font-size:30rpx;">
+              会员ID：{{appUserType}}
+              <text class='my_b_a'>{{id}}</text>
+            </view>
+          </view>
+
+        </view>
+        <view class='my_tx'>
+          <image src='{{my_tx_img}}' class='my_tx_img' background-size="cover" mode='scaleToFill'></image>
+        </view>
+        <view class='my_one_ul'>
+          <!--循环输出开始-->
+          <block wx:for="{{info_li}}" wx:for-item="lis" wx:key="lis">
+            <view>{{lis.jf}}
+              <text> {{lis.jf_a}}</text>
+              <block wx:if="{{lis.status}}">
+                <navigator url="../../pages/my/my_recharge/my_recharge" style="float:right;width:30rpx;margin-right:30rpx;">
+                  <block wx:if="{{appUserType==2}}">
+                    <image src='../../images/icon_go_lan.png' style="width:30rpx;height:30rpx;"></image>
+                  </block>
+                  <block wx:else>
+                    <image src='../../images/icon_go.png' style="width:30rpx;height:30rpx;"></image>
+                  </block>
+
+                </navigator>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <view class='my_list_center'>
+      <view class='my_list_dl'>
+        <!--待付款-->
+
+        <view class='my_list_dd'>
+          <navigator url="../../pages/my/my_order/my_order?id=1" hover-class="navigator-hover">
+            <view class='my_list_dd_a'>
+              <image src='{{fk_a_img}}' class='my_dl_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <block wx:if="{{fk_a_Num>0}}">
+                <view class='dd_a_y' style="display:block;">{{fk_a_Num}}</view>
+              </block>
+              <block wx:else>
+                <view class='dd_a_y' style="display:none;">{{fk_a_Num}}</view>
+              </block>
+            </view>
+            <text>{{fk_a}}</text>
+          </navigator>
+        </view>
+        <!--待收货-->
+        <view class='my_list_dd'>
+          <navigator url="../../pages/my/my_order/my_order?id=2" hover-class="navigator-hover">
+            <view class='my_list_dd_a'>
+              <image src='{{fk_b_img}}' class='my_dl_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <block wx:if="{{fk_b_Num>0}}">
+                <view class='dd_a_y' style="display:block;">{{fk_b_Num}}</view>
+              </block>
+              <block wx:else>
+                <view class='dd_a_y' style="display:none;">{{fk_b_Num}}</view>
+              </block>
+            </view>
+            <text>{{fk_b}}</text>
+          </navigator>
+        </view>
+        <!--配送中-->
+        <view class='my_list_dd'>
+          <navigator url="../../pages/my/my_order/my_order?id=3" hover-class="navigator-hover">
+            <view class='my_list_dd_a'>
+              <image src='{{fk_c_img}}' class='my_dl_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <block wx:if="{{fk_c_Num>0}}">
+                <view class='dd_a_y' style="display:block;">{{fk_c_Num}}</view>
+              </block>
+              <block wx:else>
+                <view class='dd_a_y' style="display:none;">{{fk_c_Num}}</view>
+              </block>
+            </view>
+            <text>{{fk_c}}</text>
+          </navigator>
+        </view>
+
+        <!--全部订单-->
+        <view class='my_list_dd'>
+          <navigator url="../../pages/my/my_order/my_order?id=0" hover-class="navigator-hover">
+            <view class='my_list_dd_a'>
+              <image src='{{fk_d_img}}' class='my_dl_img' background-size="cover" mode='mode="scaleToFill'></image>
+              <block wx:if="{{fk_d_Num>0}}">
+                <view class='dd_a_y' style="display:block;">{{fk_d_Num}}</view>
+              </block>
+              <block wx:else>
+                <view class='dd_a_y' style="display:none;">{{fk_d_Num}}</view>
+              </block>
+            </view>
+            <text>{{fk_d}}</text>
+          </navigator>
+        </view>
+
+      </view>
+    </view>
+
+
+
+    <view class='my_list_ul'>
+
+
+      <!--界面跳转 -->
+      <navigator url="../../pages/my/my_sh/my_sh" hover-class="navigator-hover">
+        <view class='my_list_li'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src='{{appUserType==2?"../../images/icon_mark_lan.png":"../../images/my_l.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>收货地址</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <block wx:if="{{appUserType==1}}">
+        <!--我的优惠券-->
+        <!--界面跳转 -->
+        <navigator url="../../pages/my/my_yh/my_yh?id={{id}}" hover-class="navigator-hover">
+          <view class='my_list_li' bindtap='changToTest'>
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src='{{appUserType==2?"../../images/icon_Coupon_lan.png":"../../images/my_e.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>我的优惠券</text>
+              </view>
+              <view class='my_list_ad'>
+                <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+
+      <!--我的积分-->
+      <!--界面跳转 -->
+      <!-- <navigator url="../../pages/my/my_jf/my_jf?id={{id}}" hover-class="navigator-hover" >
+        <view class='my_list_li' bindtap='changToTest'>
+            <view class='my_list_lia'>
+                 <view class='my_list_ab'>
+                     <image src='../../images/my_j.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+                 <view class='my_list_ac'>
+                      <text>我的积分</text>
+                 </view>
+                 <view class='my_list_ad'>
+                      <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+            </view>
+        </view>
+       </navigator> -->
+
+      <!--积分商城-->
+      <!-- <navigator url="../../pages/my/my_jfshop/my_jfshop?id={{id}}" hover-class="navigator-hover" >
+        <view class='my_list_li' bindtap='changToTest'>
+            <view class='my_list_lia'>
+                 <view class='my_list_ab'>
+                     <image src='../../images/my_k.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+                 <view class='my_list_ac'>
+                      <text>积分商城</text>
+                 </view>
+                 <view class='my_list_ad'>
+                      <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+            </view>
+        </view>
+       </navigator>   -->
+
+      <!--我的兑换-->
+      <!--界面跳转 -->
+      <!-- <navigator url="../../pages/my/my_dh/my_dh?id={{id}}" hover-class="navigator-hover" >
+        <view class='my_list_li' bindtap='changToTest'>
+            <view class='my_list_lia'>
+                 <view class='my_list_ab'>
+                     <image src='../../images/my_g.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+                 <view class='my_list_ac'>
+                      <text>我的兑换</text>
+                 </view>
+                 <view class='my_list_ad'>
+                      <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill' ></image>
+                 </view>
+            </view>
+        </view>
+       </navigator>   -->
+      <!--我的收藏-->
+      <!--界面跳转 -->
+      <navigator url="../../pages/my/my_sc/my_sc?id={{id}}" hover-class="navigator-hover">
+        <view class='my_list_li' bindtap='changToTest'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src='{{appUserType==2?"../../images/my_c_lan.png":"../../images/my_c.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>我的收藏</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <!--我的推广-->
+      <!--界面跳转 -->
+      <block wx:if='{{SaleStatus!=1}}'>
+        <navigator url="../../pages/my/my_tg/my_tg?id={{id}}" hover-class="navigator-hover" hidden='{{Activity==0}}'>
+
+          <view class='my_list_li xia' bindtap='changToTest'>
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src=' {{appUserType==2?"../../images/my_h_lan.png":"../../images/my_h.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>我的推广</text>
+              </view>
+              <view class='my_list_ad'>
+                <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+
+
+      <block wx:if='{{SaleStatus==1}}'>
+        <!--业务员推广-->
+        <!--界面跳转 -->
+        <navigator url="../../pages/my/my_SaleTg/my_SaleTg?id={{id}}" hover-class="navigator-hover" hidden='{{Activity==0}}'>
+
+          <view class='my_list_li xia' bindtap='changToTest'>
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src=' {{appUserType==2?"../../images/my_h_lan.png":"../../images/my_h.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>我的业务推广</text>
+              </view>
+              <view class='my_list_ad'>
+                <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+            </view>
+          </view>
+        </navigator>
+
+        <!--下级消费日志，缺页面 接口：api/oder/GetShareRecord-->
+        <!--界面跳转 -->
+        <view class='my_list_li xia' bindtap='my_xiaJi'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src=' {{appUserType==2?"../../images/my_h_lan.png":"../../images/my_h.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>下级消费日志</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+
+        <!--我的层级-->
+        <!--界面跳转 -->
+        <!-- <navigator url="../../pages/my/my_cj/my_cj?id={{id}}" hover-class="navigator-hover">
+      <view class='my_list_li' bindtap='changToTest'>
+        <view class='my_list_lia'>
+          <view class='my_list_ab'>
+            <image src='../../images/my_i.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+          </view>
+          <view class='my_list_ac'>
+            <text>我的层级</text>
+          </view>
+          <view class='my_list_ad'>
+            <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+          </view>
+        </view>
+      </view>
+    </navigator> -->
+        <!--我的提现-->
+        <!--界面跳转 -->
+
+
+        <navigator url="../../pages/my/my_recharge/my_recharge" hover-class="navigator-hover">
+
+          <view class='my_list_li' bindtap='changToTest'>
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src=' {{appUserType==2?"../../images/my_d_lan.png":"../../images/my_d.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>我的提现</text>
+              </view>
+              <view class='my_list_ad'>
+                <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+
+
+      <navigator url="../../pages/my/qiYe/qiYe" hover-class="navigator-hover" hidden='{{IsBooths==1}}'>
+        <view class='my_list_li xia'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src=' {{appUserType==2?"../../images/qysq_lan.png":"../../images/qysq.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>企业申请</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+
+      <!--界面跳转 -->
+
+      <navigator url="../../pages/my/my_privacy/privacy?id={{id}}" hover-class="navigator-hover">
+        <view class='my_list_li ' bindtap='changToTest'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src='{{appUserType==2?"../../images/icon_yinsi_lan.png":"../../images/icon_yinsi.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>隐私权协议</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+      <!--用户协议-->
+      <!--界面跳转 -->
+      <navigator url="../../pages/my/my_usre/my_usre?id={{id}}" hover-class="navigator-hover">
+        <view class='my_list_li' bindtap='changToTest'>
+          <view class='my_list_lia'>
+            <view class='my_list_ab'>
+              <image src='{{appUserType==2?"../../images/icon_xieyi_lan.png":"../../images/icon_xieyi.png"}}' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+            <view class='my_list_ac'>
+              <text>用户协议</text>
+            </view>
+            <view class='my_list_ad'>
+              <image src='../../images/shop_xq_b.png' class='my_list_imga' background-size="cover" mode='mode="scaleToFill'></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <block wx:if="{{ApplyRepository}}">
+        <block wx:if="{{UserEnterprise}}">
+          <!-- 用户入口 -->
+          <view class='my_list_li' bindtap='ApplyType' data-tid='0' hidden='{{IsBooths==1}}' >
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src='../../images/za_b.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>更换个人版</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <!-- 企业入口 -->
+          <view class='my_list_li' bindtap='ApplyType' data-tid='1'  hidden='{{IsBooths==1}}' >
+            <view class='my_list_lia'>
+              <view class='my_list_ab'>
+                <image src='../../images/za_a.png' class='my_list_img' background-size="cover" mode='mode="scaleToFill'></image>
+              </view>
+              <view class='my_list_ac'>
+                <text>更换企业版</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <view class='my_list_li' bindtap='changToTest'>
+        <view class='my_list_lia'>
+          <view class='my_list_ab'>
+
+          </view>
+          <view class='my_list_ac' bindtap='makePhoneCall'>
+            <text>客服电话：400-180-6050</text>
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+</view>

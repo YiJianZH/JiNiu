@@ -1,0 +1,151 @@
+<!--pages/my/my.wxml-->
+<view class='ptColor'>
+<view class='cj'>
+     <view class='cj_a'>
+           <view class='cj_atop'>
+         <view class='cj_aa'>
+            <view class='cj_ac'>
+             <text>我的推荐人</text>  <text>{{Recommend}}</text> 
+            </view>
+         </view>
+         <view class='cj_ab'>
+              <image src='/images/cj_a.png' class='ren'  background-size='cover' mode="scaleToFill"></image> 
+         </view>
+         <view class='cj_aac'>
+          <image src='/images/yezi.png' class='aac_img'  background-size='cover' mode="scaleToFill"></image> 
+          </view>
+ </view>
+     </view>
+
+     <view class='cj_one'>
+         <text class='cj_one_a'>{{ha}}</text>
+         <view class='cj_one_b'>
+             <view class='cj_one_c'>
+             <view>
+                 <view class='cj_two'>
+                     <text class='text_a'>二级</text>
+                     <view class='text_b'><text>{{second}}</text>人
+                   <!-- <text class='iconfont icon-xiangyou'></text>--> 
+                     </view>
+                 </view>
+
+                 <view class='cj_two_a'>
+                    <image src='/images/cj_b.png' class='rena'  background-size='cover' mode="scaleToFill"></image> 
+                 </view>
+              </view>
+             </view>
+             <view class='cj_one_d'>
+             <view>
+                 <view class='cj_two'>
+                     <text class='text_a'>一级</text>
+                     <view class='text_b'><text>{{first}}</text>人
+                     <!--<text class='iconfont icon-xiangyou'></text>--> 
+                     </view>
+                 </view>
+
+                 <view class='cj_two_b'>
+                    <image src='/images/cj_b.png' class='renb'  background-size='cover' mode="scaleToFill"></image> 
+                 </view>
+              </view>
+
+              <view>
+                 <view class='cj_two cj_twoa'>
+                     <text class='text_a'>三级</text>
+                     <view class='text_b'><text>{{third}}</text>人
+                     <!--<text class='iconfont icon-xiangyou'></text>--> 
+                     </view>
+                 </view>
+
+                 <view class='cj_two_b cj_twoa'>
+                    <image src='/images/cj_b.png' class='renb'  background-size='cover' mode="scaleToFill"></image> 
+                 </view>
+              </view>
+             
+             </view>
+         </view>
+     </view>
+<block wx:if="{{IsNAN}}">
+<view class='null'><image src="/images/nocart.png"></image></view>
+</block>
+</view>
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

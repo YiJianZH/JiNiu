@@ -1,0 +1,104 @@
+<!--shop_list.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <view class='shop_one'>
+    <view class='shop_one_a'>
+      <view class="Search">
+        <view class='ptsea'>
+          <input type="text" placeholder="请输入产品名称" value='{{TextName}}' class="input" confirm-type="search" bindinput="GetText" bindconfirm='OnSearch'></input>
+        </view>
+
+        <view class='SeaIcon' bindtap="OnSearch">
+          <icon type="search" size="20" style='margin-top:5px;' />
+        </view>
+      </view>
+      <scroll-view scroll-y style="height:{{windowHeight}}px;" bindscrolltolower="lower">
+
+        <!--循环输出开始-->
+        <view class='pt'>
+          <block wx:for="{{ContenList}}" wx:for-item="lis" wx:for-index="idx" wx:key="key">
+
+            <view class='shop_one_aa'>
+              <view class='shop_one_b'>
+                <block wx:if='{{lis.Inventory==0}}'>
+                  <image src='/images/icon_wu.png' class='ptImg'></image>
+                </block>
+
+                <!--界面跳转 -->
+                <block wx:if='{{lis.IsStoreBusiness}}'>
+                  <navigator url="../../pages/shop_list/shop_page/shop_pege?id={{lis.Id}}" hover-class="navigator-hover">
+                    <view class='ptImgq'>
+                      <image src='{{lis.Picture}}' class='shop_one_img' mode='mode="scaleToFill'></image>
+
+
+                    </view>
+
+                    <text class='shop_one_text'>{{lis.Title}}{{lis.Unit}}</text>
+                    <block wx:if="{{IsBooths==0}}">
+                      <text class='shop_one_text'>店铺：{{lis.SupplierName}}</text>
+                    </block>
+
+
+                  </navigator>
+                </block>
+                <block wx:else>
+
+                  <view class='ptImgq'>
+                    <image src='{{lis.Picture}}' class='shop_one_img' mode='mode="scaleToFill'></image>
+
+                    <view class='ptDa'>
+                      <text>已打烊</text>
+                    </view>
+
+
+                  </view>
+
+                  <text class='shop_one_text'>{{lis.Title}}</text>
+                  <!-- <text class='shop_one_text'>店铺：{{lis.SupplierName}}</text> -->
+
+                </block>
+
+                <view class='shop_one_c' style="">
+
+                  <block wx:if="{{lis.OldPrice>0}}">
+<view class='shop_one_d'>活动价：￥{{lis.Price}} </view>
+                  </block>
+                  <block wx:else>
+                  <view class='shop_one_d'>原价：￥{{lis.Price}}</view>
+                  </block>
+
+                  
+
+
+                  <view class='ptTxt'>
+
+                    <text hidden='{{lis.OldPrice==0}}'>原价：￥{{lis.OldPrice}}</text>
+
+                    <view class='shop_img'>
+                      <image src='{{lis.Collimg}}' data-id="{{lis.Id}}" data-indx="{{idx}}" class='shop_sc_img' background-size="cover" mode='mode="scaleToFill' bindtap="OnclickSC"></image>
+
+                      <block wx:if='{{lis.Inventory!=0}}'>
+                        <image src='{{appUserType==2?"../../images/icon_add_lan.png":"../../images/icon_add.png"}}' class='shop_one_e_img' background-size="cover" mode='mode="scaleToFill' data-id="{{lis.Id}}" data-uit="{{lis.UnitId}}" data-isb='{{lis.IsStoreBusiness}}' bindtap="joinCart"></image>
+                      </block>
+                      <block wx:else>
+                        <image src='../../images/icon_addgray.png' class='shop_one_e_img' background-size="cover" mode='mode="scaleToFill' data-id="{{lis.Id}}" data-uit="{{lis.UnitId}}" data-isb='{{lis.IsStoreBusiness}}' bindtap="joinCart"></image>
+                      </block>
+
+
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+            </view>
+
+          </block>
+        </view>
+        <view style='{{systle}}' class='Msageclass'>{{Msage}}</view>
+      </scroll-view>
+    </view>
+
+
+
+  </view>
+
+</view>

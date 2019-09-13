@@ -1,0 +1,132 @@
+<!--pages/index/merchartAround/ma.wxml-->
+<view class='ptColor'>
+<view class='ma_topInfo'>
+  <image src='/images/'></image>
+</view>
+<!-- 顶部搜索框 -->
+<view class='top_search'>
+  <image class='icon_search' src='/images/icon_search.png'></image>
+  <input placeholder='搜索商品'></input>
+</view>
+<view class="container">
+  <!--左侧栏-->
+  <view id="nav_left">
+    <scroll-view scroll-y='true' class='MenList'>
+      <view class="nav_left_items {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchRightNav">全部</view>
+      <view class="nav_left_items {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="switchRightNav">蔬菜瓜果</view>
+      <view class="nav_left_items {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="switchRightNav">蔬菜瓜果</view>
+      <view class="nav_left_items {{currentTab==3 ? 'active' : ''}}" data-current="3" bindtap="switchRightNav">蔬菜瓜果</view>
+      <view class="nav_left_items {{currentTab==4 ? 'active' : ''}}" data-current="4" bindtap="switchRightNav">蔬菜瓜果</view>
+      <view id='wrap' class="{{init_s ? 'show' : 'hide'}} {{init_sb ? 'open' : 'close'}}">
+        <view class='box'>
+          <block wx:for="{{second_lists}}" wx:key="key">
+            <view class='second_lists' bindtap='toggle_third'>{{item.sl}}</view>
+              <view id='wrap_third' class="{{init_t ? 'show' : 'hide'}} {{init_tb ? 'open' : 'close'}}">
+                <view class='box'>
+                  <block wx:for="{{third_lists}}" wx:key="key">
+                    <view class="third_lists {{currendTab==0 ? 'active': ''}}" bindtap='switchRightNav_third'>{{item.tl}}</view>
+                  </block>
+                </view>
+              </view>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--右侧栏-->
+  <view id='nav_right'>
+    <scroll-view scroll-y='true' class='MenList'>
+      <view class='box'>
+        <block>
+          <view class="right_lists">
+            <view class='top_bar'>
+              <text class='goods_count'>共有约137个商品</text>
+              <view class='goods_man' bindtap='to_goods_man'>批量管理</view>
+            </view>
+
+            <text class='fromLeftBar'>全部</text>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：50</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+            <view class='lists_con'>
+              <view class='con_top'>
+                <view class='left_wrap'>
+                  <image class='good_img' src='/images/image_fruits.png'></image>
+                  <text class='good_size'>苹果500g/份</text>
+                  <text class='good_price'>￥6.00</text>
+                </view>
+                <view class='stock'>库存：80</view>
+              </view>
+              <view class='setting_btn'>设置库存/价格</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+</view>

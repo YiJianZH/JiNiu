@@ -1,0 +1,172 @@
+page{
+  width: 100%;
+  height: 100%;
+   overflow-x: hidden;
+  background-color: #fff0be;
+}
+
+.head{
+  width: 100%;
+  height: 456rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.head image{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.headOne{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -47.5%;
+  bottom: 73rpx;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  }
+
+  .ha{
+    width: 164rpx;
+    height: 156rpx;
+    overflow: hidden;
+    position: relative;
+  }
+  
+    .ha image{
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+    }
+
+.haa{
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 2;
+}    
+
+.hab{
+  overflow: hidden;
+  text-align: center;
+  font-size: 40rpx;
+  color: #66f470;
+}
+
+.hab text{
+  font-size: 30rpx;
+  line-height: 110rpx;
+}
+
+.hac{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  font-size: 28rpx;
+  color: #ef3e21;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.headTop{
+  width: 80%;
+  height: auto;
+  overflow: hidden;
+  margin: 50rpx auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  }
+
+.headA{
+  width: 415rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #17fe26;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 50px;
+}
+
+.headB{
+  overflow: hidden;
+  margin-top: 43rpx;
+  margin-bottom: 43rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headB image{
+  margin-right:0.5em;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.headB text{
+  font-size: 30rpx;
+  color: #17fe26;
+}
+
+
+.headC{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10rpx;
+  background-color: #fe6445;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+
+
+.headTxt{
+  font-size: 30rpx;
+  color: #66f470;
+  text-align: center;
+  display: block;
+}
+.headCen{
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+  margin: 30rpx auto;
+}
+
+.headCen text{
+  display: block;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #66f470;
+}
+
+.ptColor{
+  overflow: hidden;
+}
+
+.ptColor .hab{ color: #0066ff;}
+
+.ptColor .headA{background-color: #0066ff;}
+
+.ptColor .headB text{color:#0066ff;}
+
+.ptColor .headTxt{color: #0066ff;}
+
+.ptColor .headCen text{color: #0066ff;}

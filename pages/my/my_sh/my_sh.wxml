@@ -1,0 +1,62 @@
+<!--pages/my/my.wxml-->
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <view class='sh'>
+    <template name="sh_ul">
+      <view class='sh_ul'>
+        <view class='sh_ul_a'>
+          <view class='sh_ul_aa'>
+            <view class='sh_ul_text'>
+              <text>{{Name}}</text>
+              <text>{{Phone}}</text>
+            </view>
+            <view class='sh_ul_texta'>
+              <text>{{Detail}}</text>
+              <text>{{DetailText}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='sh_ul_b'>
+          <view class='sh_ul_ba'>
+            <block wx:if="{{IsDefault}}">
+              <image src='/images/cart_b.png' class='sh_ul_img' background-size='cover' mode="scaleToFill"></image>
+            </block>
+            <block wx:else>
+              <image src='/images/cart_a.png' class='sh_ul_img' background-size='cover' data-updateid="{{Id}}" bindtap="setDefault" mode="scaleToFill"></image>
+            </block>
+            <text data-updateid="{{Id}}" bindtap="setDefault">设为默认</text>
+          </view>
+          <view class='sh_ul_bb'>
+
+            <navigator url="/pages/my/add_address/add_address?id={{Id}}" hover-class="navigator-hover">
+              <view class='sh_ul_bc'>
+                <image src='../../../images/sh_b.png' class='sh_ul_bc_img sh_ul_i' background-size='cover' mode="scaleToFill"></image>
+
+                <text>编辑</text>
+              </view>
+            </navigator>
+
+            <view class='sh_ul_bc' bindtap="del" data-id="{{Id}}">
+              <image src='../../../images/sh_a.png' class='sh_ul_bc_img' background-size='cover' mode="scaleToFill"></image>
+              <text>删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </template>
+    <!--循环输出开始-->
+    <block wx:for="{{sh_ul}}" wx:for-item="lis" wx:key="lis">
+      <template is="sh_ul" data="{{...lis}}" />
+    </block>
+  </view>
+  <block wx:if="{{IsNAN}}">
+    <view class='null'>
+      <image src="/images/AddressNoll.png"></image>
+    </view>
+  </block>
+  <navigator url="/pages/my/add_address/add_address?id=0" hover-class="navigator-hover">
+    <view class='button_a'>
+      <button type="default" size="{{defaultSize}}" bindtap="default" hover-class="none"> 新增地址 </button>
+    </view>
+  </navigator>
+</view>

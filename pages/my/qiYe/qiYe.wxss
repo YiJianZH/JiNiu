@@ -1,0 +1,257 @@
+
+page{
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/**index.wxss**/
+.swiper-tab{
+	width: 100%;
+	border-bottom: 2rpx solid #e6e6e6;
+	text-align: center;
+  background-color: #fff;
+  display:flex;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 9;
+  }
+
+.swiper-tab-list{  
+  font-size: 30rpx;
+    display: block;
+	width: 50%;
+	color: #666666;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  position: relative;
+}
+
+.on{
+  color: #de0927;
+}
+
+.on .line{   
+  width: 120rpx;
+  height: 2px;
+  background-color: #de0927;
+  overflow: hidden;
+  margin: 0 auto;
+  }
+ 
+.swiper-box{ 
+  display: block; height: 100%; width: 100%; overflow: hidden; 
+  margin-top: 105rpx;
+  }
+
+.line{
+  width: 120rpx;
+  height: 2px;
+  background-color: transparent;
+  overflow: hidden;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0px;
+  left: 34%;
+  margin-left: -60rpx;
+}
+
+.one{
+  overflow: hidden;
+}
+
+.oneLi{
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.liCen{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  border-bottom: solid 1px #e6e6e6;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.liCen > text, .liTit{
+  width: 160rpx;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #333;
+  text-align: left;
+}
+
+.liCenPt{
+  display: block;
+}
+
+.liTit{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  text-align: left;
+}
+
+.liTit text{
+  font-size: 26rpx;
+  color: #999;
+}
+
+.liIn{
+  width: calc( 100% - 180rpx );
+  height: auto;
+  overflow: hidden;
+  margin-left: 2em;
+}
+
+.liIn input{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border: none;
+  font-size: 30rpx;
+  color: #666666;
+  text-align: left;
+}
+
+.oneLiB .liIn input{
+  width:70%;
+}
+
+.liCen textarea{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border: none;
+  font-size: 30rpx;
+  color: #666666;
+  text-align: left;
+}
+
+/* liInA */
+
+.liInA{
+  width: 600rpx;
+  height: 300rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin: 30rpx auto 0px auto;
+}
+
+.liInA image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.liCenA{
+  display: block;
+}
+
+swiper-item{
+  overflow: auto;
+}
+
+.oneDiv{
+  overflow: hidden;
+  display: flex;
+}
+
+.oneTwo{
+  width:100%;
+height:auto;
+overflow:hidden;
+margin:0 auto;
+  background-color: #fff;
+}
+
+.oneTwo textarea{
+  overflow:hidden;
+width:90%;
+height:100%;
+font-size:30rpx;
+color:#666;
+display:block;
+margin:22rpx auto;
+padding:10rpx;
+border:solid 1px #e6e6e6;
+border-radius:10rpx;
+
+}
+
+.liBtn{
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin:60rpx auto 60rpx auto;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #47b34e;
+  line-height: 90rpx;
+}
+
+.liCenA{
+  display: block;
+}
+
+.oneTwob{
+  height: 200rpx;
+  background-color: #fafafa;
+  margin-top:30rpx;
+  padding-bottom: 10rpx;
+  padding-top: 10rpx;
+  border-radius: 20rpx;
+}
+
+.oneTwob textarea{
+  height: 77%;
+  width: 98%;
+  border: none;
+  margin: 0 auto;
+}
+
+.oneLiBor .liCenA{
+  border-bottom: none;
+}
+
+/* oneLiB */
+
+.oneLiB{
+  overflow: hidden;
+  position: relative
+}
+
+.oneLiB > button{
+  width: 200rpx;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-size: 28rpx;
+  color: #47b34e;
+  line-height: 47.4px;
+  background-color: transparent;
+  border: none;
+}
+
+.oneLiB > button::after{
+  border: none;
+}
+
+.ptColor{
+  overflow: hidden;
+}
+
+.ptColor .liBtn{
+  background-color: #0066ff;}
+  
+.ptColor .oneLiB > button{
+  color: #0066ff; }

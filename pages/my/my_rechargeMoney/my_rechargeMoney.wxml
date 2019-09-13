@@ -1,0 +1,32 @@
+<!--pages/my/my.wxml-->
+<!--充值-->
+
+<view class='{{appUserType==2?"ptColor":""}}'>
+  <form name='pushMsgFm' report-submit bindsubmit='orderSign'>
+    <view class='yj'>
+
+      <view class='yj_a'>
+        <view class="re_title">
+          <text class="re_con_title">现有余额（元）</text>
+          <br/>
+          <input name="input" class="re_money" style="text" disabled='disabled' value="￥{{Money}}"></input>
+        </view>
+        <view class="re_title">
+          <block wx:if="{{isRecharge}}">
+            <text class="re_con_title">{{reTitleIn}}</text>
+          </block>
+          <block wx:else>
+            <text class="re_con_title">{{auTitleIn}}</text>
+          </block>
+          <br/>
+
+          <view style="margin-top:40rpx;">
+            <text class="moicon" style="text">￥</text>
+            <input name='txt_noney' type='digit' class="re_money_in" style="text"></input>
+          </view>
+        </view>
+        <button type="type" class="re_button" form-type="submit">确定</button>
+      </view>
+    </view>
+  </form>
+</view>
